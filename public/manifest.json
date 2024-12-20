@@ -1,0 +1,10 @@
+{
+  "name": "PROJECT_NAME",
+  "short_name": "PROJECT_NAME",
+  "description": "",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/",
+  "icons": []
+}

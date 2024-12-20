@@ -1,0 +1,1 @@
+export { CategoriesSchema } from './CategoriesSchema'
