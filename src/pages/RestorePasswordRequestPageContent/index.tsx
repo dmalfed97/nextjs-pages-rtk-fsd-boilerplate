@@ -37,7 +37,7 @@ const RestorePasswordRequestPageContent: FC = () => {
           <Button
             LinkComponent={NavLink}
             variant="outlined"
-            href={AuthRoutesEnum.SIGN_IN}
+            href={AuthRoutesEnum.SIGN_UP}
             fullWidth
           >
             {t('button.createNewAccount')}

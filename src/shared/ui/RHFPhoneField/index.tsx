@@ -18,8 +18,8 @@ interface RHFPhoneFieldProps<T extends FieldValues>
 }
 
 // TODO Add validation with google-libphonenumber
-// 1 проблема - увязать с yup
-// 2 проблема - 500кб в бандл
+// 1 problem - linking with Yup
+// 2 problem - 500kb
 const RHFPhoneField = function <T extends FieldValues>({
   name,
   hookFormProps,
@@ -45,8 +45,7 @@ const RHFPhoneField = function <T extends FieldValues>({
           value={phone}
           error={!!fieldState.error?.message}
           onChange={(event) => {
-            // Здесь потенциальный костыль - берем в event только схаванные полем
-            // символы и убираем лишнее через validatePhone
+            // Potential problem here - only filtered by validatePhone symbols are provided to the event
             handlePhoneValueChange(event)
 
             const newEvent = {

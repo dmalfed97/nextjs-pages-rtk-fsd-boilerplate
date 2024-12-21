@@ -42,14 +42,14 @@ const AuthProviderInner = ({ children }: PropsWithChildren): ReactElement => {
   }, [dispatch, t, uploadingStatus])
 
   useEffect(() => {
-    // Токен уже полностью истек - удаляем текущий accessToken
+    // The token has already completely expired - delete the current accessToken
     const interval = setInterval(() => {
       if (expiresAt && expiresAt * ONE_SECOND <= new Date().getTime()) {
         dispatch(authStore.clearState())
       }
     }, appConfig.refreshTokenRefreshRate)
 
-    // Аксесс токен истек - делаем попытку получить новую пару токенов
+    // The access token has expired - we are trying to get a new pair of tokens
     const timeout = setTimeout(
       () => {
         if (Number(expiresAt) * ONE_SECOND > new Date().getTime()) {
@@ -69,12 +69,11 @@ const AuthProviderInner = ({ children }: PropsWithChildren): ReactElement => {
     }
   }, [dispatch, expiresAt])
 
-  // Здесь при инициализации прокидываем в апи-сервис функцию для обновления токена при 401
+  // Here, during initialization, we send a function to the local API service to update the token when getting 401
   useEffect(() => {
     HttpApi.updateToken = () =>
       dispatch(authStore.refreshTokensAction())
         .then(({ payload }) => {
-          // Хз как тут довести тип. Компилятор его видит но не даёт к нему обращаться нормально
           return (payload as { success: boolean }).success
         })
         .catch(() => {

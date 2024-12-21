@@ -60,7 +60,7 @@ const LoginPageContent: FC = () => {
 
           <Button
             LinkComponent={NavLink}
-            href={AuthRoutesEnum.SIGN_IN}
+            href={AuthRoutesEnum.SIGN_UP}
             variant="outlined"
             fullWidth
           >

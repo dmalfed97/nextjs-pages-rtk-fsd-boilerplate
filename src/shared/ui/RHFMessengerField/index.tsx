@@ -109,7 +109,6 @@ const RHFMessengerField = function <T extends FieldValues>({
               inputRef={field.ref}
               onFocus={() => combinedInputRef?.current?.focus()}
               onBlur={() => combinedInputRef?.current?.blur()}
-              // Пока не буду выносить ф-ию отсюда
               onChange={(event) => {
                 let newValue = event.target.value
                 if (

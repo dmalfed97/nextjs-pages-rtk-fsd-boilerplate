@@ -26,7 +26,7 @@ module.exports = {
 
     return {
       ImportDeclaration(node) {
-        // Проверка на sourcePath
+        // sourcePath check
         const importPath = node.source.value;
 
         const match = importPath.match(layersRegex);

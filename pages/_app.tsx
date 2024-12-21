@@ -14,11 +14,19 @@ import { MuiProvider } from '~app/providers/MuiProvider'
 import { storeWrapper } from '~app/providers/StoreProvider/store'
 import { BaseLayout } from '~layouts/BaseLayout'
 
-const App = ({ Component, pageProps, userAgent }: AppProps & { userAgent: string }) => {
+interface IAppProps extends AppProps {
+  props: {
+    userAgent: string
+  }
+}
+
+const App = ({ Component, pageProps, props }: IAppProps) => {
+  const data = storeWrapper.useWrappedStore({ pageProps })
+
   const {
     store,
     props: { emotionCache },
-  } = storeWrapper.useWrappedStore({ pageProps })
+  } = data
 
   return (
     <AppCacheProvider emotionCache={emotionCache}>
@@ -29,7 +37,7 @@ const App = ({ Component, pageProps, userAgent }: AppProps & { userAgent: string
       <MuiProvider>
         <Provider store={store}>
           <AuthProvider>
-            <DeviceProvider userAgent={userAgent}>
+            <DeviceProvider userAgent={props.userAgent}>
               <CssBaseline />
 
               <BaseLayout>
@@ -51,16 +59,9 @@ const App = ({ Component, pageProps, userAgent }: AppProps & { userAgent: string
   )
 }
 
-App.getInitialProps = async (appContext: AppContext) => {
-  let pageProps = {}
-
-  if (appContext.Component.getInitialProps) {
-    pageProps = await appContext.Component.getInitialProps(appContext.ctx)
-  }
-
+App.getInitialProps = (appContext: AppContext) => {
   return {
     props: {
-      ...pageProps,
       userAgent: appContext.ctx.req
         ? appContext.ctx.req.headers['user-agent'] || ''
         : navigator.userAgent,

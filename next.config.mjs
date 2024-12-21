@@ -34,9 +34,7 @@ export default (phase, { defaultConfig }) => {
     // Can cause problems in case of loading data on page on SSR step (If you clear redux state on page unmount)
     // reactStrictMode: true,
 
-    swcMinify: true,
     experimental: {
-      appDir: false,
       typedRoutes: true,
       optimizePackageImports: [
         'date-fns',

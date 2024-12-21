@@ -32,7 +32,7 @@ const SignUpConfirmPageContent: FC = () => {
     } else {
       toast.error(t('auth:error.invalidConfirmationLink'))
 
-      void router.push(AuthRoutesEnum.SIGN_IN)
+      void router.push(AuthRoutesEnum.SIGN_UP)
     }
   }, [dispatch, params, router, t])
 

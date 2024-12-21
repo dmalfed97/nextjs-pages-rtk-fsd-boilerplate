@@ -1,8 +1,8 @@
 export enum AuthRoutesEnum {
   AUTH = '/auth',
   LOGIN = '/auth/login',
-  SIGN_IN = '/auth/signin',
-  SIGN_IN_CONFIRM = '/auth/signin/confirm',
+  SIGN_UP = '/auth/signup',
+  SIGN_UP_CONFIRM = '/auth/signup/confirm',
   RESTORE = '/auth/restore',
   RESTORE_CHANGE_PASSWORD = '/auth/restore/change-password',
 }

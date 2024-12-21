@@ -35,7 +35,7 @@ const CropAvatarStep: FC<CropAvatarStepProps> = ({ handleCloseModal, image }) =>
 
       const formData = new FormData()
 
-      // Преобразование Base64 строки в массив байтов
+      // Convert Base64 string to byte array
       const byteString = atob(croppedImage.split(',')[1])
       const mimeString = croppedImage.split(',')[0].split(':')[1].split(';')[0]
 

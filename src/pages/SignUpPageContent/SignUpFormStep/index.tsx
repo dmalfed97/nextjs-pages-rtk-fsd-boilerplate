@@ -20,11 +20,11 @@ const FacebookSignInButton = dynamic(
   }
 )
 
-interface SignInFormStepProps {
+interface SignUpFormStepProps {
   onSubmitCallback: () => void
 }
 
-const SignInFormStep: FC<SignInFormStepProps> = ({ onSubmitCallback }) => {
+const SignUpFormStep: FC<SignUpFormStepProps> = ({ onSubmitCallback }) => {
   const { t } = useTranslation(['common', 'auth'])
 
   // Renders
@@ -63,4 +63,4 @@ const SignInFormStep: FC<SignInFormStepProps> = ({ onSubmitCallback }) => {
   )
 }
 
-export { SignInFormStep }
+export { SignUpFormStep }

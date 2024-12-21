@@ -15,7 +15,7 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
   }
 }
 
-const SignInPage: FC<GetServerSidePropsResult<SSRConfig>> = () => {
+const SignUpPage: FC<GetServerSidePropsResult<SSRConfig>> = () => {
   return (
     <UnauthorizedRoute>
       <SignUpPageContent />
@@ -23,4 +23,4 @@ const SignInPage: FC<GetServerSidePropsResult<SSRConfig>> = () => {
   )
 }
 
-export default SignInPage
+export default SignUpPage

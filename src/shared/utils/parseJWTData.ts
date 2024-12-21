@@ -13,7 +13,7 @@ export const parseJWTData = (accessToken: string): JWTData => {
     const decodedData = JSON.parse(atob(payload))
     return decodedData as JWTData
   } catch (error) {
-    console.log(error)
+    console.error(error)
     throw new Error('Invalid JWT token')
   }
 }

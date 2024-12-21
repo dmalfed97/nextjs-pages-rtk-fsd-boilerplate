@@ -36,7 +36,7 @@ const logoutQuery = (data: LogoutDto) => {
   return HttpApi.post<LogoutDto, BaseResponseWrapper>('auth/logout', data)
 }
 
-/* Сессии */
+/* Sessions */
 const logoutAllSessionsQuery = (data: LogoutDto) => {
   return HttpApi.post<LogoutDto, BaseResponseWrapper>('auth/logout-all', data)
 }
@@ -45,7 +45,7 @@ const logoutAllSessionsQuery = (data: LogoutDto) => {
 //   return HttpApi.get<BaseResponseWrapper<SessionModel[]>>(`auth/sessions`)
 // }
 
-/* Регистрация */
+/* SignUp */
 const registerQuery = (data: RegistrationDto) => {
   return HttpApi.post<RegistrationDto, BaseResponseWrapper<TokensModel>>('register', data)
 }
@@ -57,7 +57,7 @@ const confirmRegistrationQuery = (data: ConfirmRegistrationQueryPayload) => {
   )
 }
 
-/* Сброс пароля */
+/* Password restore */
 const sendResetPasswordEmailQuery = (data: RestorePasswordRequestDto) => {
   return HttpApi.post<RestorePasswordRequestDto, BaseResponseWrapper>(
     `users/send-reset-password-email`,
