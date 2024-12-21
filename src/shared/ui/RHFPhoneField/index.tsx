@@ -1,10 +1,9 @@
-import type { ReactElement } from 'react'
-import React from 'react'
-import type { FieldPath, FieldValues, UseWatchProps } from 'react-hook-form'
-import { Controller } from 'react-hook-form'
 import type { OutlinedTextFieldProps } from '@mui/material'
 import { InputAdornment, MenuItem, Select, TextField, Typography } from '@mui/material'
 import { useTranslation } from 'next-i18next'
+import React from 'react'
+import type { FieldPath, FieldValues, UseWatchProps } from 'react-hook-form'
+import { Controller } from 'react-hook-form'
 import type { ParsedCountry } from 'react-international-phone'
 import { defaultCountries, FlagImage, parseCountry, usePhoneInput } from 'react-international-phone'
 
@@ -12,7 +11,8 @@ import { validatePhone } from '../../utils/validation/validatePhone'
 
 import 'react-international-phone/style.css'
 
-interface PhoneInputProps<T extends FieldValues> extends Omit<OutlinedTextFieldProps, 'variant'> {
+interface RHFPhoneFieldProps<T extends FieldValues>
+  extends Omit<OutlinedTextFieldProps, 'variant'> {
   name: FieldPath<T>
   hookFormProps: Omit<UseWatchProps<T>, 'name' | 'render' | 'defaultValue'>
 }
@@ -20,11 +20,11 @@ interface PhoneInputProps<T extends FieldValues> extends Omit<OutlinedTextFieldP
 // TODO Add validation with google-libphonenumber
 // 1 проблема - увязать с yup
 // 2 проблема - 500кб в бандл
-const PhoneInputWithController = function <T extends FieldValues>({
+const RHFPhoneField = function <T extends FieldValues>({
   name,
   hookFormProps,
   ...rest
-}: PhoneInputProps<T>): ReactElement {
+}: RHFPhoneFieldProps<T>) {
   const { i18n } = useTranslation()
 
   const { phone, handlePhoneValueChange, country, setCountry } = usePhoneInput({
@@ -125,4 +125,4 @@ const PhoneInputWithController = function <T extends FieldValues>({
   )
 }
 
-export { PhoneInputWithController }
+export { RHFPhoneField }

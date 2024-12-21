@@ -1,12 +1,9 @@
-import type { ReactElement } from 'react'
-import React, { useCallback } from 'react'
-import { makeStyles } from 'tss-react/mui'
 import { IconButton } from '@mui/material'
 import Image from 'next/image'
-import type { IResolveParams, objectType } from 'reactjs-social-login'
-import { LoginSocialFacebook } from 'reactjs-social-login'
+import React, { useCallback, type FC, type ReactElement } from 'react'
+import { LoginSocialFacebook, type IResolveParams, type objectType } from 'reactjs-social-login'
+import { makeStyles } from 'tss-react/mui'
 
-import { AuthRoutesEnum } from '~shared/types/routesEnums'
 // import useAppDispatch from '~shared/hooks/useAppDispatch'
 // import {
 //   AuthorizationService,
@@ -14,6 +11,7 @@ import { AuthRoutesEnum } from '~shared/types/routesEnums'
 // } from '~shared/types/externalServices'
 // import { authStore } from '~entities/auth'
 import FacebookIcon from '~public/icons/facebook.svg'
+import { AuthRoutesEnum } from '~shared/types/routesEnums'
 
 interface FacebookSignInButtonProps {
   renderTrigger?: ReactElement
@@ -21,11 +19,11 @@ interface FacebookSignInButtonProps {
   onSuccess?: () => void
 }
 
-const FacebookSignInButton = ({
+const FacebookSignInButton: FC<FacebookSignInButtonProps> = ({
   onError,
   onSuccess,
   renderTrigger,
-}: FacebookSignInButtonProps): ReactElement => {
+}) => {
   const { classes } = useStyles()
 
   // const dispatch = useAppDispatch()
@@ -33,7 +31,7 @@ const FacebookSignInButton = ({
   // Handlers
   const handleSuccessResponse = useCallback(
     (response: IResolveParams): void => {
-      // FIXME
+      // TODO
       if (response.data?.access_token) {
         onSuccess?.()
       }

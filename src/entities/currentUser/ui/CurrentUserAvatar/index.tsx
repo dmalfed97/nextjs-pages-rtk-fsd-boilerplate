@@ -1,8 +1,7 @@
-import type { ReactElement } from 'react'
-import React from 'react'
-import { makeStyles } from 'tss-react/mui'
-import { Box } from '@mui/material'
 import { Person as PersonIcon, Error as ErrorIcon } from '@mui/icons-material'
+import { Box } from '@mui/material'
+import React, { type FC } from 'react'
+import { makeStyles } from 'tss-react/mui'
 
 import { currentUserSelectors } from '../..'
 
@@ -10,7 +9,7 @@ interface CurrentUserAvatarProps {
   className?: string
 }
 
-const CurrentUserAvatar = ({ className }: CurrentUserAvatarProps): ReactElement => {
+const CurrentUserAvatar: FC<CurrentUserAvatarProps> = ({ className }) => {
   const { classes, cx } = useStyles()
 
   const currentUser = currentUserSelectors.useCurrentUser()

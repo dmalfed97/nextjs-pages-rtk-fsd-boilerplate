@@ -1,10 +1,9 @@
-import React from 'react'
-import type { ReactElement } from 'react'
 import { Stack } from '@mui/material'
+import React, { type FC } from 'react'
 
 import { DescriptionBlock } from './DescriptionBlock'
 
-const AboutMeTab = (): ReactElement => {
+const AboutMeTab: FC = () => {
   return (
     <Stack gap={5}>
       <DescriptionBlock />

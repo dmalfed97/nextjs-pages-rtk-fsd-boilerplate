@@ -1,9 +1,6 @@
-import type { FC } from 'react'
-import React, { useEffect, useRef } from 'react'
-import type { LottieComponentProps, LottieRefCurrentProps } from 'lottie-light-react'
-import Lottie from 'lottie-light-react'
-import { Skeleton } from '@mui/material'
-import type { SkeletonProps } from '@mui/material'
+import { Skeleton, type SkeletonProps } from '@mui/material'
+import Lottie, { type LottieComponentProps, type LottieRefCurrentProps } from 'lottie-light-react'
+import React, { useEffect, useRef, type FC } from 'react'
 
 interface ILottieComponentProps extends LottieComponentProps {
   isPaused?: boolean
@@ -42,13 +39,13 @@ const LottieComponent: FC<ILottieComponentProps> = ({
   return <Lottie lottieRef={lottieRef} {...props} />
 }
 
-interface PromiseAnimationProps extends Omit<ILottieComponentProps, 'animationData'> {
+interface AsyncLottieComponentProps extends Omit<ILottieComponentProps, 'animationData'> {
   animationData: Promise<any>
   loaderClassName: SkeletonProps['className']
   loaderSx: SkeletonProps['sx']
 }
 
-const PromiseLottieComponent: FC<PromiseAnimationProps> = ({
+const AsyncLottieComponent: FC<AsyncLottieComponentProps> = ({
   animationData: animationDataPromise,
   loaderClassName,
   loaderSx,
@@ -73,4 +70,4 @@ const PromiseLottieComponent: FC<PromiseAnimationProps> = ({
   return <LottieComponent {...rest} animationData={animationData} />
 }
 
-export { PromiseLottieComponent }
+export { AsyncLottieComponent }

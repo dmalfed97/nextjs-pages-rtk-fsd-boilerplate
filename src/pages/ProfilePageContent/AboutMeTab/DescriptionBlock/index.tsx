@@ -1,7 +1,6 @@
 import { Skeleton, Stack, Typography } from '@mui/material'
 import { useTranslation } from 'next-i18next'
-import type { FC } from 'react'
-import React from 'react'
+import React, { type FC } from 'react'
 
 import { currentUserSelectors } from '~entities/currentUser'
 

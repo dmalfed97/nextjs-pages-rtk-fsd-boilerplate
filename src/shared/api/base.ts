@@ -1,6 +1,4 @@
 import axios from 'axios'
-import toast from 'react-hot-toast'
-import { t } from 'i18next'
 import type {
   AxiosError,
   AxiosInstance,
@@ -8,6 +6,8 @@ import type {
   AxiosResponse,
   CreateAxiosDefaults,
 } from 'axios'
+import { t } from 'i18next'
+import toast from 'react-hot-toast'
 
 import { appConfig } from '~app/config'
 

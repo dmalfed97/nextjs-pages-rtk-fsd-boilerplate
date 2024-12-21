@@ -1,7 +1,7 @@
-import React, { type FC } from 'react'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import type { GetServerSidePropsResult, GetServerSideProps } from 'next'
 import type { SSRConfig } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import React, { type FC } from 'react'
 
 import { appConfig } from '~app/config'
 import { LoginPageContent } from '~pages/LoginPageContent'

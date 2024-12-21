@@ -1,6 +1,5 @@
 import { Skeleton, Stack, Typography } from '@mui/material'
-import React from 'react'
-import type { FC } from 'react'
+import React, { type FC } from 'react'
 
 import { CurrentUserHelper, currentUserSelectors } from '~entities/currentUser'
 import { useMuiMediaQuery } from '~shared/hooks/useMediaQuery'

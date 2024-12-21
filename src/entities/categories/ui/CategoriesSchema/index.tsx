@@ -1,11 +1,15 @@
-import React from 'react'
 import Head from 'next/head'
+import React from 'react'
 
 import type { CategoryModel } from '../../models'
 
 interface ICategoriesSchema {
   categories: CategoryModel[]
 }
+
+//
+// JUST AN EXAMPLE
+//
 
 const CategoriesSchema: React.FC<ICategoriesSchema> = ({ categories }) => {
   const schemaData = {

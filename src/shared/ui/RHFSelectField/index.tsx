@@ -1,15 +1,13 @@
-import type { ReactNode } from 'react'
-import React from 'react'
 import type { SelectProps, SelectVariants } from '@mui/material'
 import { FormControl, InputLabel, Select, FormHelperText } from '@mui/material'
+import { useTranslation } from 'next-i18next'
+import React, { type ReactNode } from 'react'
 import type { UseWatchProps, FieldPath, FieldValues, ControllerFieldState } from 'react-hook-form'
 import { Controller } from 'react-hook-form'
-import { useTranslation } from 'next-i18next'
 
 import { useStyles } from './index.styled'
 
-interface SelectFieldWithControllerProps<T extends FieldValues>
-  extends Omit<SelectProps, 'variant'> {
+interface RHFSelectFieldProps<T extends FieldValues> extends Omit<SelectProps, 'variant'> {
   name: FieldPath<T>
   hookFormProps: Omit<UseWatchProps<T>, 'name' | 'render' | 'defaultValue'>
   variant?: SelectVariants
@@ -17,20 +15,20 @@ interface SelectFieldWithControllerProps<T extends FieldValues>
 }
 
 /**
- * Select с react-hook-form Controller
- * @param name - для react-hook-form Controller
+ * Select for react-hook-form
+ * @param name - for r-h-f control prop
  * @param hookFormProps
  * @param variant
  * @param helperText
- * @param rest - наследуются от SelectProps
+ * @param rest - inherit from SelectProps
  */
-const SelectFieldWithController = function <T extends FieldValues>({
+const RHFSelectField = function <T extends FieldValues>({
   name,
   hookFormProps,
   variant = 'outlined',
   helperText,
   ...rest
-}: SelectFieldWithControllerProps<T>) {
+}: RHFSelectFieldProps<T>) {
   const { t } = useTranslation('common')
 
   const { classes } = useStyles()
@@ -81,4 +79,4 @@ const SelectFieldWithController = function <T extends FieldValues>({
   )
 }
 
-export { SelectFieldWithController }
+export { RHFSelectField }

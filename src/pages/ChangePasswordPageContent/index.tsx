@@ -1,13 +1,12 @@
-import type { ReactElement } from 'react'
-import React, { useState } from 'react'
+import React, { useState, type FC } from 'react'
 
 import { AuthLayout } from '~layouts/AuthLayout'
 
-import { ChangePasswordPageSteps } from './steps'
 import { ChangePasswordFormStep } from './ChangePasswordFormStep'
+import { ChangePasswordPageSteps } from './steps'
 import { SuccessStep } from './SuccessStep'
 
-const ChangePasswordPageContent = (): ReactElement => {
+const ChangePasswordPageContent: FC = () => {
   const [step, setStep] = useState<ChangePasswordPageSteps>(ChangePasswordPageSteps.FORM_STEP)
 
   // Handlers

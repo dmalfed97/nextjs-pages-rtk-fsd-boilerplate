@@ -1,10 +1,10 @@
-import React, { useState, type FC } from 'react'
-import { AppBar, Toolbar, Stack, Button, IconButton, Drawer } from '@mui/material'
 import { Close as CloseIcon, Menu as MenuIcon } from '@mui/icons-material'
-import NavLink from 'next/link'
+import { AppBar, Toolbar, Stack, Button, IconButton, Drawer } from '@mui/material'
 import dynamic from 'next/dynamic'
-import { useTranslation } from 'next-i18next'
 import Image from 'next/image'
+import NavLink from 'next/link'
+import { useTranslation } from 'next-i18next'
+import React, { useState, type FC } from 'react'
 
 import { useAuthContext } from '~app/providers/Auth'
 import { AuthRoutesEnum } from '~shared/types/routesEnums'
@@ -46,7 +46,7 @@ const MobileHeader: FC = () => {
         </IconButton>
 
         <Stack direction="row" alignItems="center" gap={10}>
-          <NavLink href="/" className={classes.imgLink}>
+          <NavLink href={{ pathname: '/' }} className={classes.imgLink}>
             <Image src="" alt="main logo" />
           </NavLink>
         </Stack>

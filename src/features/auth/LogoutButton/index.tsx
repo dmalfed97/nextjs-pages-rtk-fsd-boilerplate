@@ -1,20 +1,19 @@
-import type { ReactElement, MouseEvent } from 'react'
-import React, { useState, useCallback } from 'react'
-import { makeStyles } from 'tss-react/mui'
-import { useTranslation } from 'next-i18next'
 import { Button, Stack, Typography } from '@mui/material'
+import { useTranslation } from 'next-i18next'
+import React, { useState, useCallback, type ReactElement, type FC, type MouseEvent } from 'react'
+import { makeStyles } from 'tss-react/mui'
 
-import { CustomModal } from '~shared/ui/CustomModal'
-import useAppDispatch from '~shared/hooks/useAppDispatch'
 import { authStore } from '~entities/auth'
+import useAppDispatch from '~shared/hooks/useAppDispatch'
+import { QModal } from '~shared/ui/QModal'
 
 interface LogoutButtonProps {
   className?: string
-  renderTrigger?: (onClick: (event: MouseEvent) => void) => ReactElement
+  renderTrigger?: (onClick: (e: MouseEvent) => void) => ReactElement
   onClose?: () => void
 }
 
-const LogoutButton = ({ className, renderTrigger, onClose }: LogoutButtonProps): ReactElement => {
+const LogoutButton: FC<LogoutButtonProps> = ({ className, renderTrigger, onClose }) => {
   const { t } = useTranslation(['common', 'auth'])
 
   const { classes, cx } = useStyles()
@@ -54,7 +53,7 @@ const LogoutButton = ({ className, renderTrigger, onClose }: LogoutButtonProps):
         </Button>
       )}
 
-      <CustomModal open={isOpened} onClose={handleCloseModal}>
+      <QModal open={isOpened} onClose={handleCloseModal}>
         <Stack className={classes.container} gap={5}>
           <Typography component="p" className={classes.message}>
             {t('auth:modal.logOut.infoMessage')}
@@ -74,7 +73,7 @@ const LogoutButton = ({ className, renderTrigger, onClose }: LogoutButtonProps):
             </Button>
           </Stack>
         </Stack>
-      </CustomModal>
+      </QModal>
     </>
   )
 }

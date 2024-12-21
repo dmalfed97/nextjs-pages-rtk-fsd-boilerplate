@@ -1,6 +1,6 @@
-import React, { type FC } from 'react'
 import { Container, Stack, Typography, Link } from '@mui/material'
 import NavLink from 'next/link'
+import React, { type FC } from 'react'
 import { makeStyles } from 'tss-react/mui'
 
 import { useMuiMediaQuery } from '~shared/hooks/useMediaQuery'
@@ -22,7 +22,7 @@ const Footer: FC = () => {
         >
           <Typography variant="body2">© 2025 FSD Boilerplate</Typography>
 
-          <Link component={NavLink} href="">
+          <Link component={NavLink} href={{ pathname: '/' }}>
             <Typography variant="body2">Example link</Typography>
           </Link>
         </Stack>

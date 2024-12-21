@@ -1,7 +1,7 @@
 import type { AxiosResponse } from 'axios'
 
-import { parseJWTData } from '~shared/utils/parseJWTData'
 import type { BaseResponseWrapper } from '~shared/api/base'
+import { parseJWTData } from '~shared/utils/parseJWTData'
 
 import type { TokensModel } from '../models'
 

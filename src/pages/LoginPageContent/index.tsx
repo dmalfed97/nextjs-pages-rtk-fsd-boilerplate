@@ -1,12 +1,12 @@
-import React, { type FC } from 'react'
 import { Stack, Typography, Button, Divider } from '@mui/material'
-import { useTranslation } from 'next-i18next'
-import NavLink from 'next/link'
 import dynamic from 'next/dynamic'
+import NavLink from 'next/link'
+import { useTranslation } from 'next-i18next'
+import React, { type FC } from 'react'
 
+import { AuthLayout } from '~layouts/AuthLayout'
 import { LoginForm } from '~widgets/LoginForm'
 import { AuthRoutesEnum } from '~shared/types/routesEnums'
-import { AuthLayout } from '~layouts/AuthLayout'
 import { useMuiMediaQuery } from '~shared/hooks/useMediaQuery'
 
 const GoogleSignInButton = dynamic(

@@ -1,9 +1,8 @@
-import type { FC } from 'react'
-import React, { useMemo } from 'react'
 import { Stack, Link, Typography } from '@mui/material'
 import NavLink from 'next/link'
-import { makeStyles } from 'tss-react/mui'
 import { useRouter } from 'next/router'
+import React, { useMemo, type FC } from 'react'
+import { makeStyles } from 'tss-react/mui'
 
 import { LanguageDropdownSelector } from '~entities/language'
 

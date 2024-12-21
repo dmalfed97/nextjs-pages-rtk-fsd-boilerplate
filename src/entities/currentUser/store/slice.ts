@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
-import { LoadingStatus, UploadingStatus } from '~shared/types/loadingStatus'
 import Dto from '~shared/services/DtoService'
+import { LoadingStatus, UploadingStatus } from '~shared/types/loadingStatus'
 
 import { currentUserApi } from '../api'
 import { UpdateCurrentUserDto, UpdatePasswordDto, ChangeEmailDto } from '../dto'

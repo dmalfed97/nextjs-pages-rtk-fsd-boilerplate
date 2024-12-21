@@ -1,25 +1,23 @@
 import { Close as CloseIcon } from '@mui/icons-material'
-import type { DialogProps } from '@mui/material'
-import { Dialog, IconButton, Slide, Stack, Typography } from '@mui/material'
+import { Dialog, IconButton, Slide, Stack, Typography, type DialogProps } from '@mui/material'
 import type { TransitionProps } from '@mui/material/transitions'
-import type { MouseEvent } from 'react'
-import React, { memo } from 'react'
+import React, { memo, type MouseEvent } from 'react'
 import { makeStyles } from 'tss-react/mui'
 
-interface IMobileCustomModalProps extends DialogProps {
-  onClose: (event: MouseEvent) => void
+interface QMobileModalProps extends DialogProps {
+  onClose: (e: MouseEvent) => void
   hasCloseIcon?: boolean
 }
 
-const MobileCustomModal = memo(
-  ({ children, title, onClose, hasCloseIcon, ...props }: IMobileCustomModalProps) => {
+const QMobileModal = memo(
+  ({ children, title, onClose, hasCloseIcon, ...props }: QMobileModalProps) => {
     const { classes } = useStyles()
 
     // Handlers
-    const handleModalClose = (event: MouseEvent): void => {
-      event.stopPropagation()
+    const handleModalClose = (e: MouseEvent): void => {
+      e.stopPropagation()
 
-      onClose(event)
+      onClose(e)
     }
 
     // Renders
@@ -84,4 +82,4 @@ const useStyles = makeStyles()((theme) => ({
   },
 }))
 
-export { MobileCustomModal }
+export { QMobileModal }

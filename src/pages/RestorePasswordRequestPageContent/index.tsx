@@ -1,15 +1,14 @@
-import type { ReactElement } from 'react'
-import React from 'react'
 import { Stack, Typography, Button, Divider } from '@mui/material'
-import { useTranslation } from 'next-i18next'
 import NavLink from 'next/link'
+import { useTranslation } from 'next-i18next'
+import React, { type FC } from 'react'
 
 import { RestorePasswordRequestForm } from '~widgets/RestorePasswordRequestForm'
 import { useMuiMediaQuery } from '~shared/hooks/useMediaQuery'
 import { AuthRoutesEnum } from '~shared/types/routesEnums'
 import { AuthLayout } from '~layouts/AuthLayout'
 
-const RestorePasswordRequestPageContent = (): ReactElement => {
+const RestorePasswordRequestPageContent: FC = () => {
   const { t } = useTranslation(['common', 'auth'])
 
   const { isSM } = useMuiMediaQuery()

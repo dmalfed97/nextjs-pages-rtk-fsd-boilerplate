@@ -1,7 +1,7 @@
-import React, { type FC } from 'react'
 import { Button, Stack, Typography } from '@mui/material'
 import NavLink from 'next/link'
 import { useTranslation } from 'next-i18next'
+import React, { type FC } from 'react'
 
 const SuccessStep: FC = () => {
   const { t } = useTranslation(['common', 'auth'])

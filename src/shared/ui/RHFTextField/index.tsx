@@ -1,15 +1,12 @@
-import type { TextFieldProps, TextFieldVariants } from '@mui/material'
-import { TextField } from '@mui/material'
-import type { ReactNode } from 'react'
-import React from 'react'
+import { TextField, type TextFieldProps, type TextFieldVariants } from '@mui/material'
+import { useTranslation } from 'next-i18next'
+import React, { type ReactNode } from 'react'
 import type { UseWatchProps, FieldPath, FieldValues, ControllerFieldState } from 'react-hook-form'
 import { Controller } from 'react-hook-form'
-import { useTranslation } from 'next-i18next'
 
 import { useStyles } from './index.styled'
 
-interface TextFieldWithControllerProps<T extends FieldValues>
-  extends Omit<TextFieldProps, 'variant'> {
+interface RHFTextFieldProps<T extends FieldValues> extends Omit<TextFieldProps, 'variant'> {
   name: FieldPath<T>
   hookFormProps: Omit<UseWatchProps<T>, 'name' | 'render' | 'defaultValue'>
   trimWhiteSpaces?: boolean
@@ -17,20 +14,20 @@ interface TextFieldWithControllerProps<T extends FieldValues>
 }
 
 /**
- * TextField с react-hook-form Controller
- * @param name - для react-hook-form Controller
+ * TextField for react-hook-form
+ * @param name - for r-h-f control prop
  * @param hookFormProps
- * @param trimWhiteSpaces - флаг для чистки поля при onChange от пробелов
+ * @param trimWhiteSpaces - flag for clearing the field from spaces during onChange
  * @param variant
- * @param rest - наследуются от TextFieldProps
+ * @param rest - inherit from SelectProps
  */
-const TextFieldWithController = function <T extends FieldValues>({
+const RHFTextField = function <T extends FieldValues>({
   name,
   hookFormProps,
   trimWhiteSpaces,
   variant = 'outlined',
   ...rest
-}: TextFieldWithControllerProps<T>) {
+}: RHFTextFieldProps<T>) {
   const { t } = useTranslation('common')
 
   const { classes } = useStyles()
@@ -86,4 +83,4 @@ const TextFieldWithController = function <T extends FieldValues>({
   )
 }
 
-export { TextFieldWithController }
+export { RHFTextField }

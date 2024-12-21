@@ -1,10 +1,8 @@
-import type { ReactElement } from 'react'
-import React, { useCallback } from 'react'
-import { makeStyles } from 'tss-react/mui'
 import { IconButton } from '@mui/material'
 import Image from 'next/image'
-import type { IResolveParams, objectType } from 'reactjs-social-login'
-import { LoginSocialGoogle } from 'reactjs-social-login'
+import React, { useCallback, type ReactElement } from 'react'
+import { LoginSocialGoogle, type IResolveParams, type objectType } from 'reactjs-social-login'
+import { makeStyles } from 'tss-react/mui'
 
 // import useAppDispatch from '~shared/hooks/useAppDispatch'
 // import {
@@ -32,7 +30,7 @@ const GoogleSignInButton = ({
   // Handlers
   const handleSuccessResponse = useCallback(
     (response: IResolveParams): void => {
-      // FIXME
+      // TODO
       if (response.data?.access_token) {
         onSuccess?.()
       }

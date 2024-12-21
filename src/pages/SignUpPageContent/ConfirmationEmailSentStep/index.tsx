@@ -1,11 +1,10 @@
-import type { ReactElement } from 'react'
-import React from 'react'
-import { useTranslation } from 'next-i18next'
 import { Button, Stack, Typography } from '@mui/material'
 import NavLink from 'next/link'
 import { useParams } from 'next/navigation'
+import { useTranslation } from 'next-i18next'
+import React, { type FC } from 'react'
 
-const ConfirmationEmailSentStep = (): ReactElement => {
+const ConfirmationEmailSentStep: FC = () => {
   const params = useParams<{ email: string }>()
 
   const { t } = useTranslation(['common', 'auth'])

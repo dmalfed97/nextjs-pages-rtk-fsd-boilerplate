@@ -1,23 +1,25 @@
-import type { ChangeEvent, ReactElement } from 'react'
-import React, { useState } from 'react'
-import { Stack, Typography, Checkbox, Link /*, MenuItem */ } from '@mui/material'
-import { useTranslation } from 'next-i18next'
-import type { SubmitHandler } from 'react-hook-form'
-import { FormProvider, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { LoadingButton } from '@mui/lab'
+import { Stack, Typography, Checkbox, Link /*, MenuItem */ } from '@mui/material'
 import NavLink from 'next/link'
+import { useTranslation } from 'next-i18next'
+import React, { useState, type FC, type ChangeEvent } from 'react'
+import { FormProvider, useForm, type SubmitHandler } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
-import type { RegistrationFormValues } from '~entities/auth'
-import { authStore, authSelectors, RegistrationFormFields } from '~entities/auth'
-// import { SelectFieldWithController } from '~shared/ui/SelectFieldWithController'
-import { PasswordInputWithController } from '~shared/ui/PasswordInputWithController'
-import { UploadingStatus } from '~shared/types/loadingStatus'
+import {
+  authStore,
+  authSelectors,
+  RegistrationFormFields,
+  type RegistrationFormValues,
+} from '~entities/auth'
+// import { RHFSelectField } from '~shared/ui/RHFSelectField'
 import type { BaseResponseWrapper } from '~shared/api/base'
 // import { Sex } from '~shared/types/sex'
 import useAppDispatch from '~shared/hooks/useAppDispatch'
-import { TextFieldWithController } from '~shared/ui/TextFieldWithController'
+import { UploadingStatus } from '~shared/types/loadingStatus'
+import { RHFPasswordField } from '~shared/ui/RHFPasswordField'
+import { RHFTextField } from '~shared/ui/RHFTextField'
 
 import { RegistrationValidationSchema } from '../validation'
 
@@ -25,7 +27,7 @@ interface RegistrationFormProps {
   onSuccess?: () => void
 }
 
-const RegistrationForm = ({ onSuccess }: RegistrationFormProps): ReactElement => {
+const RegistrationForm: FC<RegistrationFormProps> = ({ onSuccess }) => {
   const { t } = useTranslation(['common', 'auth'])
 
   const dispatch = useAppDispatch()
@@ -33,7 +35,7 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps): ReactElement =>
 
   const [rulesApplied, setRulesApplied] = useState<boolean>(false)
 
-  const methods = useForm<RegistrationFormValues>({
+  const formMethods = useForm<RegistrationFormValues>({
     // @ts-expect-error typical yup error
     resolver: yupResolver<RegistrationFormValues>(RegistrationValidationSchema),
     defaultValues: {
@@ -47,7 +49,7 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps): ReactElement =>
       // [RegistrationFormFields.location]: '',
     },
   })
-  const { control, handleSubmit } = methods
+  const { control, handleSubmit } = formMethods
 
   // Handlers
   const handleChangeCheckboxValue = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -79,11 +81,11 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps): ReactElement =>
 
   // Renders
   return (
-    <FormProvider {...methods}>
+    <FormProvider {...formMethods}>
       <Stack component="form" gap={3} onSubmit={handleSubmit(onSubmit)}>
         <Stack gap={2.5} alignSelf="stretch">
           {/*<Stack gap="row" gap={2.5}>*/}
-          {/*  <TextFieldWithController*/}
+          {/*  <RHFTextField*/}
           {/*    autoComplete="on"*/}
           {/*    name={RegistrationFormFields.firstName}*/}
           {/*    trimWhiteSpaces*/}
@@ -91,7 +93,7 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps): ReactElement =>
           {/*    label={t('input.firstName.label')}*/}
           {/*  />*/}
 
-          {/*  <TextFieldWithController*/}
+          {/*  <RHFTextField*/}
           {/*    autoComplete="on"*/}
           {/*    name={RegistrationFormFields.lastName}*/}
           {/*    trimWhiteSpaces*/}
@@ -100,7 +102,7 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps): ReactElement =>
           {/*  />*/}
           {/*</Stack>*/}
 
-          <TextFieldWithController
+          <RHFTextField
             fullWidth
             autoComplete="on"
             name={RegistrationFormFields.email}
@@ -109,7 +111,7 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps): ReactElement =>
             label={t('input.email.label')}
           />
 
-          {/*<SelectFieldWithController*/}
+          {/*<RHFSelectField*/}
           {/*  fullWidth*/}
           {/*  name={RegistrationFormFields.sex}*/}
           {/*  hookFormProps={{ control }}*/}
@@ -118,9 +120,9 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps): ReactElement =>
           {/*  <MenuItem value={Sex.MALE}>{t('input.sex.value.MALE')}</MenuItem>*/}
 
           {/*  <MenuItem value={Sex.FEMALE}>{t('input.sex.value.FEMALE')}</MenuItem>*/}
-          {/*</SelectFieldWithController>*/}
+          {/*</RHFSelectField>*/}
 
-          <PasswordInputWithController
+          <RHFPasswordField
             fullWidth
             autoComplete="off"
             hookFormProps={{ control }}
@@ -128,7 +130,7 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps): ReactElement =>
             label={t('input.password.label')}
           />
 
-          <PasswordInputWithController
+          <RHFPasswordField
             fullWidth
             autoComplete="off"
             hookFormProps={{ control }}
@@ -147,19 +149,19 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps): ReactElement =>
           <Typography variant="subtitle2">
             {`${t('auth:screens.registration.rules.iAgree')} `}
 
-            <Link component={NavLink} href="" color="#1FAE4C">
+            <Link component={NavLink} href={{ pathname: '' }} color="#1FAE4C">
               {t('auth:screens.registration.rules.termsOfService')}
             </Link>
 
             {t('auth:screens.registration.rules.including')}
 
-            <Link component={NavLink} href="" color="#1FAE4C">
+            <Link component={NavLink} href={{ pathname: '' }} color="#1FAE4C">
               {t('auth:screens.registration.rules.userAgreement')}
             </Link>
 
             {t('auth:screens.registration.rules.and')}
 
-            <Link component={NavLink} href="" color="#1FAE4C">
+            <Link component={NavLink} href={{ pathname: '' }} color="#1FAE4C">
               {t('auth:screens.registration.rules.privacyPolicy')}
             </Link>
           </Typography>

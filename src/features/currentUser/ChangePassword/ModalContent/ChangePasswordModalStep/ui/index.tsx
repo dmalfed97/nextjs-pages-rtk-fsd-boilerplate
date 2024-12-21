@@ -1,23 +1,21 @@
-import type { ReactElement, MouseEvent } from 'react'
-import React from 'react'
-import { useTranslation } from 'next-i18next'
-import { Button, Stack } from '@mui/material'
-import { LoadingButton } from '@mui/lab'
-import type { SubmitHandler } from 'react-hook-form'
-import { FormProvider, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { LoadingButton } from '@mui/lab'
+import { Button, Stack } from '@mui/material'
+import { useTranslation } from 'next-i18next'
+import React, { type FC, type MouseEvent } from 'react'
+import { FormProvider, useForm, type SubmitHandler } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
-import { UploadingStatus } from '~shared/types/loadingStatus'
-import { PasswordInputWithController } from '~shared/ui/PasswordInputWithController'
-import useAppDispatch from '~shared/hooks/useAppDispatch'
-import type { BaseResponseWrapper } from '~shared/api/base'
-import type { UpdatePasswordFormValues } from '~entities/currentUser'
 import {
   currentUserStore,
   currentUserSelectors,
   UpdatePasswordFormFields,
+  type UpdatePasswordFormValues,
 } from '~entities/currentUser'
+import type { BaseResponseWrapper } from '~shared/api/base'
+import useAppDispatch from '~shared/hooks/useAppDispatch'
+import { UploadingStatus } from '~shared/types/loadingStatus'
+import { RHFPasswordField } from '~shared/ui/RHFPasswordField'
 
 import { ChangePasswordModalSteps } from '../../../step'
 import { UpdatePasswordValidationSchema } from '../validation'
@@ -27,23 +25,23 @@ interface ChangePasswordModalContentProps {
   setStep: (step: ChangePasswordModalSteps) => void
 }
 
-const ChangePasswordModalContent = ({
+const ChangePasswordModalContent: FC<ChangePasswordModalContentProps> = ({
   handleCloseModal,
   setStep,
-}: ChangePasswordModalContentProps): ReactElement => {
+}) => {
   const { t } = useTranslation('common')
 
   const dispatch = useAppDispatch()
   const uploadingStatus = currentUserSelectors.useUploadingStatus()
 
-  const methods = useForm<UpdatePasswordFormValues>({
+  const formMethods = useForm<UpdatePasswordFormValues>({
     resolver: yupResolver<UpdatePasswordFormValues>(UpdatePasswordValidationSchema),
     defaultValues: {
       [UpdatePasswordFormFields.oldPassword]: '',
       [UpdatePasswordFormFields.newPassword]: '',
     },
   })
-  const { handleSubmit, control } = methods
+  const { handleSubmit, control } = formMethods
 
   // Handlers
   const showErrorMessage = (): void => {
@@ -68,10 +66,10 @@ const ChangePasswordModalContent = ({
 
   // Renders
   return (
-    <FormProvider {...methods}>
+    <FormProvider {...formMethods}>
       <Stack component="form" gap={3} onSubmit={handleSubmit(onSubmit)}>
         <Stack gap={1} alignSelf="stretch" alignItems="flex-start">
-          <PasswordInputWithController
+          <RHFPasswordField
             fullWidth
             autoComplete="off"
             hookFormProps={{ control }}
@@ -83,7 +81,7 @@ const ChangePasswordModalContent = ({
             {t('button.iForgotPassword')}
           </Button>
 
-          <PasswordInputWithController
+          <RHFPasswordField
             fullWidth
             autoComplete="off"
             hookFormProps={{ control }}

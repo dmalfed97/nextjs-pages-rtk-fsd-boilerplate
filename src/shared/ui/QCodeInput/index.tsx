@@ -1,16 +1,14 @@
-import type { ReactElement } from 'react'
-import React from 'react'
-import { makeStyles } from 'tss-react/mui'
-import type { VerificationInputProps } from 'react-verification-input'
-import VerificationInput from 'react-verification-input'
 import { Stack, Typography } from '@mui/material'
 import { useTranslation } from 'next-i18next'
+import React, { type FC } from 'react'
+import VerificationInput, { type VerificationInputProps } from 'react-verification-input'
+import { makeStyles } from 'tss-react/mui'
 
-interface CodeInputProps extends VerificationInputProps {
+interface QCodeInputProps extends VerificationInputProps {
   codeIsInvalid?: boolean
 }
 
-const CodeInput = ({ classNames, codeIsInvalid, ...rest }: CodeInputProps): ReactElement => {
+const QCodeInput: FC<QCodeInputProps> = ({ classNames, codeIsInvalid, ...rest }) => {
   const { t } = useTranslation('common')
 
   const { classes, cx } = useStyles()
@@ -51,4 +49,4 @@ const useStyles = makeStyles()(() => ({
   },
 }))
 
-export { CodeInput }
+export { QCodeInput }

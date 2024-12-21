@@ -1,10 +1,11 @@
 import { createAsyncThunk, createSlice, type PayloadAction } from '@reduxjs/toolkit'
 
 import { appConfig } from '~app/config'
-import { getFingerprint } from '~shared/utils/getFingerprint'
-import { UploadingStatus } from '~shared/types/loadingStatus'
 import Dto from '~shared/services/DtoService'
+import { UploadingStatus } from '~shared/types/loadingStatus'
+import { getFingerprint } from '~shared/utils/getFingerprint'
 
+import { type ConfirmRegistrationQueryPayload, authApi } from '../api'
 import {
   RestorePasswordDto,
   LoginDto,
@@ -13,14 +14,13 @@ import {
   RegistrationDto,
   RestorePasswordRequestDto,
 } from '../dto'
-import { type ConfirmRegistrationQueryPayload, authApi } from '../api'
-import { AuthStoreHelper } from '../helpers'
 import type {
   RestorePasswordFormValues,
   LoginFormValues,
   RegistrationFormValues,
   RestorePasswordRequestFormValues,
 } from '../forms'
+import { AuthStoreHelper } from '../helpers'
 
 interface IAuthSlice {
   uploadingStatus: UploadingStatus

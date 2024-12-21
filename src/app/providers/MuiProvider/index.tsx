@@ -1,12 +1,9 @@
-import type { PropsWithChildren, ReactElement } from 'react'
-import React, { useState, useEffect } from 'react'
-import { createTheme, ThemeProvider } from '@mui/material'
-import { LocalizationProvider } from '@mui/x-date-pickers'
+import { createTheme, ThemeProvider, type Theme } from '@mui/material'
+import { LocalizationProvider, type PickersLocaleText } from '@mui/x-date-pickers'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3'
-import { useTranslation } from 'next-i18next'
-import type { PickersLocaleText } from '@mui/x-date-pickers'
-import type { Theme } from '@mui/material'
 import type { Locale } from 'date-fns'
+import { useTranslation } from 'next-i18next'
+import React, { useState, useEffect, type PropsWithChildren, type FC } from 'react'
 
 import { LanguageEnum } from '~shared/types/language'
 
@@ -24,7 +21,7 @@ const defaultLocale: LocalesObj = {
   theme: baseTheme,
 }
 
-const MuiProvider = ({ children }: PropsWithChildren): ReactElement => {
+const MuiProvider: FC<PropsWithChildren> = ({ children }) => {
   const { i18n } = useTranslation()
   const [currentLocale, setCurrentLocale] = useState<LocalesObj>(defaultLocale)
 

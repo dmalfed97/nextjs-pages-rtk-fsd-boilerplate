@@ -1,15 +1,13 @@
-import type { ReactElement, MouseEvent } from 'react'
-import React, { createRef } from 'react'
-import type { ReactCropperElement } from 'react-cropper'
-import { Cropper } from 'react-cropper'
-import { Button, Stack } from '@mui/material'
 import { LoadingButton } from '@mui/lab'
+import { Button, Stack } from '@mui/material'
 import { useTranslation } from 'next-i18next'
+import React, { createRef, type FC, type MouseEvent } from 'react'
+import { Cropper, type ReactCropperElement } from 'react-cropper'
 
-import { UploadingStatus } from '~shared/types/loadingStatus'
+import { currentUserStore, currentUserSelectors } from '~entities/currentUser'
 import useAppDispatch from '~shared/hooks/useAppDispatch'
 import { useMuiMediaQuery } from '~shared/hooks/useMediaQuery'
-import { currentUserStore, currentUserSelectors } from '~entities/currentUser'
+import { UploadingStatus } from '~shared/types/loadingStatus'
 
 import 'cropperjs/dist/cropper.css'
 
@@ -18,7 +16,7 @@ interface CropAvatarStepProps {
   image: string | ArrayBuffer | null
 }
 
-const CropAvatarStep = ({ handleCloseModal, image }: CropAvatarStepProps): ReactElement => {
+const CropAvatarStep: FC<CropAvatarStepProps> = ({ handleCloseModal, image }) => {
   const { t } = useTranslation('common')
 
   const { isSM } = useMuiMediaQuery()

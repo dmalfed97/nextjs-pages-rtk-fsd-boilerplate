@@ -1,16 +1,16 @@
-import React, { useEffect, type FC } from 'react'
-import { useTranslation } from 'next-i18next'
 import { Button, CircularProgress, Stack, Typography } from '@mui/material'
-import { useParams } from 'next/navigation'
 import NavLink from 'next/link'
+import { useParams } from 'next/navigation'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
+import React, { useEffect, type FC } from 'react'
 import toast from 'react-hot-toast'
 
 import { authStore, authSelectors } from '~entities/auth'
-import { AuthRoutesEnum } from '~shared/types/routesEnums'
-import { UploadingStatus } from '~shared/types/loadingStatus'
-import useAppDispatch from '~shared/hooks/useAppDispatch'
 import { AuthLayout } from '~layouts/AuthLayout'
+import useAppDispatch from '~shared/hooks/useAppDispatch'
+import { UploadingStatus } from '~shared/types/loadingStatus'
+import { AuthRoutesEnum } from '~shared/types/routesEnums'
 
 const SignUpConfirmPageContent: FC = () => {
   const params = useParams<{ token: string }>()

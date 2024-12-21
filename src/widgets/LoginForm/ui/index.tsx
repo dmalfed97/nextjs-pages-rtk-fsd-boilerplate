@@ -1,22 +1,19 @@
-import type { ReactElement } from 'react'
-import React from 'react'
-import { Stack, Button } from '@mui/material'
-import { useTranslation } from 'next-i18next'
-import type { SubmitHandler } from 'react-hook-form'
-import { FormProvider, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { LoadingButton } from '@mui/lab'
+import { Stack, Button } from '@mui/material'
 import NavLink from 'next/link'
+import { useTranslation } from 'next-i18next'
+import React, { type FC } from 'react'
+import { FormProvider, useForm, type SubmitHandler } from 'react-hook-form'
 
-import type { LoginFormValues } from '~entities/auth'
-import { authStore, authSelectors, LoginFormFields } from '~entities/auth'
-import { PasswordInputWithController } from '~shared/ui/PasswordInputWithController'
-import { UploadingStatus } from '~shared/types/loadingStatus'
+import { authStore, authSelectors, LoginFormFields, type LoginFormValues } from '~entities/auth'
 import type { BaseResponseWrapper } from '~shared/api/base'
-import { AuthRoutesEnum } from '~shared/types/routesEnums'
-import { useMuiMediaQuery } from '~shared/hooks/useMediaQuery'
 import useAppDispatch from '~shared/hooks/useAppDispatch'
-import { TextFieldWithController } from '~shared/ui/TextFieldWithController'
+import { useMuiMediaQuery } from '~shared/hooks/useMediaQuery'
+import { UploadingStatus } from '~shared/types/loadingStatus'
+import { AuthRoutesEnum } from '~shared/types/routesEnums'
+import { RHFPasswordField } from '~shared/ui/RHFPasswordField'
+import { RHFTextField } from '~shared/ui/RHFTextField'
 
 import { LoginValidationSchema } from '../validation'
 
@@ -24,7 +21,7 @@ interface LoginFormProps {
   onSuccess?: () => void
 }
 
-const LoginForm = ({ onSuccess }: LoginFormProps): ReactElement => {
+const LoginForm: FC<LoginFormProps> = ({ onSuccess }) => {
   const { t } = useTranslation('common')
 
   const { isSM } = useMuiMediaQuery()
@@ -32,14 +29,14 @@ const LoginForm = ({ onSuccess }: LoginFormProps): ReactElement => {
   const dispatch = useAppDispatch()
   const uploadingStatus = authSelectors.useUploadingStatus()
 
-  const methods = useForm<LoginFormValues>({
+  const formMethods = useForm<LoginFormValues>({
     resolver: yupResolver<LoginFormValues>(LoginValidationSchema),
     defaultValues: {
       [LoginFormFields.email]: '',
       [LoginFormFields.password]: '',
     },
   })
-  const { control, handleSubmit } = methods
+  const { control, handleSubmit } = formMethods
 
   // Handlers
   const onSubmit: SubmitHandler<LoginFormValues> = (values) => {
@@ -57,10 +54,10 @@ const LoginForm = ({ onSuccess }: LoginFormProps): ReactElement => {
 
   // Renders
   return (
-    <FormProvider {...methods}>
+    <FormProvider {...formMethods}>
       <Stack component="form" gap={4} onSubmit={handleSubmit(onSubmit)}>
         <Stack gap={2.5} alignSelf="stretch">
-          <TextFieldWithController
+          <RHFTextField
             fullWidth
             autoComplete="on"
             name={LoginFormFields.email}
@@ -70,7 +67,7 @@ const LoginForm = ({ onSuccess }: LoginFormProps): ReactElement => {
             label={t('input.login.label')}
           />
 
-          <PasswordInputWithController
+          <RHFPasswordField
             fullWidth
             autoComplete="on"
             hookFormProps={{ control }}

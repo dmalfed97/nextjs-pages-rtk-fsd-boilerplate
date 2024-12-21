@@ -111,7 +111,13 @@ module.exports = {
     ],
     "import/prefer-default-export": "off",
     "no-use-before-define": "off",
-    "@typescript-eslint/consistent-type-imports": "error",
+    "@typescript-eslint/consistent-type-imports": [
+      "error",
+      {
+        "prefer": "type-imports",
+        "fixStyle": "inline-type-imports"
+      }
+    ],
     "@conarti/feature-sliced/layers-slices": ["error", {
       "ignorePatterns": ["~app/**"]
     }],

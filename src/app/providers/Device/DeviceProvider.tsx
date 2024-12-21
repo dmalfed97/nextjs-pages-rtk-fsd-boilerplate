@@ -1,14 +1,12 @@
-import type { ReactNode, FC } from 'react'
-import React from 'react'
+import React, { type FC, type PropsWithChildren } from 'react'
 
 import { DeviceTypeEnum } from '~shared/types/device'
 import { detectDevice } from '~shared/utils/detectDevice'
 
 import { DeviceContext } from './DeviceContext'
 
-interface DeviceProviderProps {
+interface DeviceProviderProps extends PropsWithChildren {
   userAgent: string
-  children: ReactNode
 }
 
 export const DeviceProvider: FC<DeviceProviderProps> = ({ userAgent, children }) => {

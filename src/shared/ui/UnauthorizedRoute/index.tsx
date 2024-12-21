@@ -1,15 +1,10 @@
-import type { ReactElement } from 'react'
-import React, { useEffect } from 'react'
-import { useRouter } from 'next/router'
 import { CircularProgress, Stack } from '@mui/material'
+import { useRouter } from 'next/router'
+import React, { useEffect, type FC, type PropsWithChildren } from 'react'
 
 import { useAuthContext } from '~app/providers/Auth'
 
-interface AuthorizedRouteProps {
-  children: ReactElement
-}
-
-const UnauthorizedRoute = ({ children }: AuthorizedRouteProps): ReactElement => {
+const UnauthorizedRoute: FC<PropsWithChildren> = ({ children }) => {
   const router = useRouter()
 
   const { isAuthorized } = useAuthContext()

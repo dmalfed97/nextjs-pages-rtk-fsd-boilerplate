@@ -1,12 +1,9 @@
-import type { ReactElement } from 'react'
-import React, { useCallback } from 'react'
 import { IconButton } from '@mui/material'
-import { makeStyles } from 'tss-react/mui'
 import Image from 'next/image'
-import type { IResolveParams, objectType } from 'reactjs-social-login'
-import { LoginSocialApple } from 'reactjs-social-login'
+import React, { useCallback, type ReactElement, type FC } from 'react'
+import { LoginSocialApple, type IResolveParams, type objectType } from 'reactjs-social-login'
+import { makeStyles } from 'tss-react/mui'
 
-import { AuthRoutesEnum } from '~shared/types/routesEnums'
 // import useAppDispatch from '~shared/hooks/useAppDispatch'
 // import {
 //   AuthorizationService,
@@ -14,6 +11,7 @@ import { AuthRoutesEnum } from '~shared/types/routesEnums'
 // } from '~shared/types/externalServices'
 // import { authStore } from '~entities/auth'
 import AppleIcon from '~public/icons/apple.svg'
+import { AuthRoutesEnum } from '~shared/types/routesEnums'
 
 interface GoogleSignInButtonProps {
   renderTrigger?: ReactElement
@@ -21,11 +19,7 @@ interface GoogleSignInButtonProps {
   onSuccess?: () => void
 }
 
-const AppleSignInButton = ({
-  onError,
-  onSuccess,
-  renderTrigger,
-}: GoogleSignInButtonProps): ReactElement => {
+const AppleSignInButton: FC<GoogleSignInButtonProps> = ({ onError, onSuccess, renderTrigger }) => {
   const { classes } = useStyles()
 
   // const dispatch = useAppDispatch()
@@ -33,7 +27,7 @@ const AppleSignInButton = ({
   // Handlers
   const handleSuccessResponse = useCallback(
     (response: IResolveParams): void => {
-      // FIXME
+      // TODO
       if (response.data?.access_token) {
         onSuccess?.()
       }

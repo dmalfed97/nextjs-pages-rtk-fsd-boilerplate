@@ -1,16 +1,15 @@
-import type { ReactElement, MouseEvent } from 'react'
-import React, { useState } from 'react'
-import { makeStyles } from 'tss-react/mui'
 import { Divider, Menu, MenuItem, Skeleton, Stack, Typography } from '@mui/material'
-import { useTranslation } from 'next-i18next'
 import NavLink from 'next/link'
+import { useTranslation } from 'next-i18next'
+import React, { useState, type MouseEvent, type FC } from 'react'
+import { makeStyles } from 'tss-react/mui'
 
 import { LogoutButton } from '~features/auth/LogoutButton'
 import { UpdatePassword } from '~features/currentUser/ChangePassword'
 import { CurrentUserAvatar, CurrentUserHelper, currentUserSelectors } from '~entities/currentUser'
 import { PrivateRoutesEnum } from '~shared/types/routesEnums'
 
-const ProfileHeaderDropdown = (): ReactElement => {
+const ProfileHeaderDropdown: FC = () => {
   const { t } = useTranslation('common')
 
   const { classes } = useStyles()
@@ -21,8 +20,8 @@ const ProfileHeaderDropdown = (): ReactElement => {
   const isDropdownOpen = Boolean(anchorEl)
 
   // Handlers
-  const handleClick = (event: MouseEvent<HTMLElement>): void => {
-    setAnchorEl(event.currentTarget)
+  const handleClick = (e: MouseEvent<HTMLElement>): void => {
+    setAnchorEl(e.currentTarget)
   }
 
   const handleClose = (): void => {
@@ -61,7 +60,7 @@ const ProfileHeaderDropdown = (): ReactElement => {
         onClose={handleClose}
         onClick={handleClose}
       >
-        <NavLink href={PrivateRoutesEnum.PROFILE} passHref legacyBehavior>
+        <NavLink href={{ pathname: PrivateRoutesEnum.PROFILE }} passHref legacyBehavior>
           <MenuItem onClick={handleClose}>{t('button.myAccount')}</MenuItem>
         </NavLink>
 

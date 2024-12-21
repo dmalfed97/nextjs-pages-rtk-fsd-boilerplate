@@ -1,18 +1,18 @@
-import React from 'react'
-import type { AppProps, AppContext } from 'next/app'
-import Head from 'next/head'
-import { Provider } from 'react-redux'
-import { appWithTranslation } from 'next-i18next'
 import { CssBaseline } from '@mui/material'
 import { AppCacheProvider } from '@mui/material-nextjs/v15-pagesRouter'
+import type { AppProps, AppContext } from 'next/app'
+import Head from 'next/head'
+import { appWithTranslation } from 'next-i18next'
+import React from 'react'
 import { Toaster } from 'react-hot-toast'
+import { Provider } from 'react-redux'
 import 'reflect-metadata'
 
 import { AuthProvider } from '~app/providers/Auth'
-import { BaseLayout } from '~layouts/BaseLayout'
+import { DeviceProvider } from '~app/providers/Device'
 import { MuiProvider } from '~app/providers/MuiProvider'
 import { storeWrapper } from '~app/providers/StoreProvider/store'
-import { DeviceProvider } from '~app/providers/Device'
+import { BaseLayout } from '~layouts/BaseLayout'
 
 const App = ({ Component, pageProps, userAgent }: AppProps & { userAgent: string }) => {
   const {

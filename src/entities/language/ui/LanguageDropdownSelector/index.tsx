@@ -1,18 +1,16 @@
-import type { ReactElement } from 'react'
-import React from 'react'
-import type { SelectChangeEvent } from '@mui/material'
-import { MenuItem, Select, Stack } from '@mui/material'
-import { useTranslation } from 'next-i18next'
-import { makeStyles } from 'tss-react/mui'
+import { MenuItem, Select, Stack, type SelectChangeEvent } from '@mui/material'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
+import React, { type FC } from 'react'
+import { makeStyles } from 'tss-react/mui'
 
 import { appConfig } from '~app/config'
-import { LanguageEnum } from '~shared/types/language'
 import FlagRu from '~public/icons/flag-ru.svg'
 import FlagUk from '~public/icons/flag-uk.svg'
+import { LanguageEnum } from '~shared/types/language'
 
-const LanguageDropdownSelector = (): ReactElement => {
+const LanguageDropdownSelector: FC = () => {
   const router = useRouter()
 
   const { i18n } = useTranslation()

@@ -1,40 +1,30 @@
-import type { ReactElement, MouseEvent } from 'react'
-import React, { memo } from 'react'
-import { makeStyles } from 'tss-react/mui'
-import dynamic from 'next/dynamic'
-import type { ModalProps } from '@mui/material'
-import { Modal, Box, Paper, Typography, IconButton } from '@mui/material'
 import { Close as CloseIcon } from '@mui/icons-material'
+import { Modal, Box, Paper, Typography, IconButton, type ModalProps } from '@mui/material'
+import dynamic from 'next/dynamic'
+import React, { memo, type MouseEvent } from 'react'
+import { makeStyles } from 'tss-react/mui'
 
 import { useMuiMediaQuery } from '../../hooks/useMediaQuery'
 
 // Dynamic imports
-const MobileCustomModal = dynamic(() =>
-  import('../MobileCustomModal').then((m) => m.MobileCustomModal)
-)
+const MobileCustomModal = dynamic(() => import('../QMobileModal').then((m) => m.QMobileModal))
 
-export interface CustomModalProps extends ModalProps {
-  onClose: (event: MouseEvent) => void
+export interface QModalProps extends ModalProps {
+  onClose: (e: MouseEvent) => void
   width?: number | string
   wrapperClassName?: string
 }
 
-const CustomModal = memo(
-  ({
-    children,
-    onClose,
-    width = 700,
-    wrapperClassName,
-    ...rest
-  }: CustomModalProps): ReactElement => {
+const QModal = memo(
+  ({ children, onClose, width = 700, wrapperClassName, ...rest }: QModalProps) => {
     const { isSM } = useMuiMediaQuery()
     const { classes, cx } = useStyles({ width })
 
     // Handlers
-    const handleModalClose = (event: MouseEvent): void => {
-      event.stopPropagation()
+    const handleModalClose = (e: MouseEvent): void => {
+      e.stopPropagation()
 
-      onClose(event)
+      onClose(e)
     }
 
     // Renders
@@ -91,4 +81,4 @@ const useStyles = makeStyles<{ width: number | string }>()((theme, { width }) =>
   },
 }))
 
-export { CustomModal }
+export { QModal }

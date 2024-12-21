@@ -1,12 +1,10 @@
-import type { ReactElement } from 'react'
-import React from 'react'
+import { SwipeableDrawer, type SwipeableDrawerProps } from '@mui/material'
+import React, { type FC } from 'react'
 import { makeStyles } from 'tss-react/mui'
-import type { SwipeableDrawerProps } from '@mui/material'
-import { SwipeableDrawer } from '@mui/material'
 
-type CustomSwipeableDrawerProps = SwipeableDrawerProps
+type QSwipeableDrawerProps = SwipeableDrawerProps
 
-const CustomSwipeableDrawer = ({
+const QSwipeableDrawer: FC<QSwipeableDrawerProps> = ({
   className,
   anchor = 'bottom',
   onOpen = () => {},
@@ -14,7 +12,7 @@ const CustomSwipeableDrawer = ({
   disableDiscovery = true,
   disableSwipeToOpen = true,
   ...rest
-}: CustomSwipeableDrawerProps): ReactElement => {
+}) => {
   const { classes, cx } = useStyles()
 
   // Renders
@@ -42,4 +40,4 @@ const useStyles = makeStyles()(() => ({
   },
 }))
 
-export { CustomSwipeableDrawer }
+export { QSwipeableDrawer }

@@ -1,8 +1,7 @@
-import type { PropsWithChildren, ReactElement } from 'react'
-import React from 'react'
-import { makeStyles } from 'tss-react/mui'
 import { Stack } from '@mui/material'
 import dynamic from 'next/dynamic'
+import React, { type PropsWithChildren, type FC } from 'react'
+import { makeStyles } from 'tss-react/mui'
 
 import { useMuiMediaQuery } from '~shared/hooks/useMediaQuery'
 
@@ -12,7 +11,7 @@ import { Footer } from './Footer'
 const Header = dynamic(() => import('./Header').then((m) => m.Header))
 const MobileHeader = dynamic(() => import('./MobileHeader').then((m) => m.MobileHeader))
 
-const BaseLayout = ({ children }: PropsWithChildren): ReactElement => {
+const BaseLayout: FC<PropsWithChildren> = ({ children }) => {
   const { isLG } = useMuiMediaQuery()
   const { classes } = useStyles()
 

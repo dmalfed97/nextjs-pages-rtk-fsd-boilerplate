@@ -1,9 +1,8 @@
-import type { MouseEvent, ReactElement } from 'react'
-import React from 'react'
+import React, { type MouseEvent, type FC } from 'react'
 
 import { ChangePasswordModalSteps } from '../step'
-import { RestoreAccessModalStep } from './RestoreAccessModalStep'
 import { ChangePasswordModalContent } from './ChangePasswordModalStep'
+import { RestoreAccessModalStep } from './RestoreAccessModalStep'
 
 interface ModalContentProps {
   step: ChangePasswordModalSteps
@@ -11,7 +10,7 @@ interface ModalContentProps {
   handleCloseModal: (e?: MouseEvent) => void
 }
 
-const ModalContent = ({ handleCloseModal, step, setStep }: ModalContentProps): ReactElement => {
+const ModalContent: FC<ModalContentProps> = ({ handleCloseModal, step, setStep }) => {
   return (
     <>
       {step === ChangePasswordModalSteps.CHANGE_PASSWORD_MODAL_STEP && (

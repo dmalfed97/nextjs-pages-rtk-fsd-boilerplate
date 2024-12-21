@@ -2,9 +2,9 @@ import React, { useState, type FC } from 'react'
 
 import { AuthLayout } from '~layouts/AuthLayout'
 
-import { SignInPageSteps } from './steps'
-import { SignInFormStep } from './SignUpFormStep'
 import { ConfirmationEmailSentStep } from './ConfirmationEmailSentStep'
+import { SignInFormStep } from './SignUpFormStep'
+import { SignInPageSteps } from './steps'
 
 const SignUpPageContent: FC = () => {
   const [step, setStep] = useState<SignInPageSteps>(SignInPageSteps.FORM_STEP)

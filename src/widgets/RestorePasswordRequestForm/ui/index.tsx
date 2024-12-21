@@ -1,17 +1,19 @@
-import type { ReactElement } from 'react'
-import React from 'react'
-import { Stack } from '@mui/material'
-import { useTranslation } from 'next-i18next'
-import type { SubmitHandler } from 'react-hook-form'
-import { FormProvider, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { LoadingButton } from '@mui/lab'
+import { Stack } from '@mui/material'
+import { useTranslation } from 'next-i18next'
+import React, { type FC } from 'react'
+import { FormProvider, useForm, type SubmitHandler } from 'react-hook-form'
 
-import type { RestorePasswordRequestFormValues } from '~entities/auth'
-import { authStore, authSelectors, RestorePasswordRequestFormFields } from '~entities/auth'
+import {
+  authStore,
+  authSelectors,
+  RestorePasswordRequestFormFields,
+  type RestorePasswordRequestFormValues,
+} from '~entities/auth'
 import useAppDispatch from '~shared/hooks/useAppDispatch'
 import { UploadingStatus } from '~shared/types/loadingStatus'
-import { TextFieldWithController } from '~shared/ui/TextFieldWithController'
+import { RHFTextField } from '~shared/ui/RHFTextField'
 
 import { RestorePasswordRequestValidationSchema } from '../validation'
 
@@ -19,20 +21,20 @@ interface RestorePasswordRequestProps {
   onSuccess?: () => void
 }
 
-const RestorePasswordRequestForm = ({ onSuccess }: RestorePasswordRequestProps): ReactElement => {
+const RestorePasswordRequestForm: FC<RestorePasswordRequestProps> = ({ onSuccess }) => {
   const { t } = useTranslation('common')
 
   const dispatch = useAppDispatch()
   const uploadingStatus = authSelectors.useUploadingStatus()
 
-  const methods = useForm<RestorePasswordRequestFormValues>({
+  const formMethods = useForm<RestorePasswordRequestFormValues>({
     // @ts-expect-error typical yup error
     resolver: yupResolver<RestorePasswordRequestFormValues>(RestorePasswordRequestValidationSchema),
     defaultValues: {
       [RestorePasswordRequestFormFields.email]: '',
     },
   })
-  const { control, handleSubmit } = methods
+  const { control, handleSubmit } = formMethods
 
   // Handlers
   const onSubmit: SubmitHandler<RestorePasswordRequestFormValues> = (values) => {
@@ -43,10 +45,10 @@ const RestorePasswordRequestForm = ({ onSuccess }: RestorePasswordRequestProps):
 
   // Renders
   return (
-    <FormProvider {...methods}>
+    <FormProvider {...formMethods}>
       <Stack component="form" gap={3} onSubmit={handleSubmit(onSubmit)}>
         <Stack gap={2.5} alignSelf="stretch">
-          <TextFieldWithController
+          <RHFTextField
             fullWidth
             autoComplete="off"
             hookFormProps={{ control }}

@@ -1,9 +1,7 @@
-import type { ReactElement } from 'react'
-import React, { memo } from 'react'
-import type { DrawerProps } from '@mui/material'
-import { CircularProgress, Drawer, Stack } from '@mui/material'
+import { CircularProgress, Drawer, Stack, type DrawerProps } from '@mui/material'
+import React, { memo, type ReactElement } from 'react'
 
-interface SideDrawerWithLoadingProps extends DrawerProps {
+interface QDrawerWithLoadingProps extends DrawerProps {
   isLoading?: boolean
   customLoader?: ReactElement
   width?: number | string
@@ -11,7 +9,7 @@ interface SideDrawerWithLoadingProps extends DrawerProps {
   contentClassName?: string
 }
 
-const SideDrawerWithLoading = memo(
+const QDrawerWithLoading = memo(
   ({
     isLoading = false,
     customLoader,
@@ -23,7 +21,7 @@ const SideDrawerWithLoading = memo(
     open,
     onClose,
     ...rest
-  }: SideDrawerWithLoadingProps): ReactElement => (
+  }: QDrawerWithLoadingProps) => (
     <Drawer anchor={anchor} open={open} onClose={onClose} {...rest}>
       <Stack width={width} height={height} className={contentClassName}>
         {isLoading ? customLoader || <CircularProgress sx={{ alignSelf: 'center' }} /> : children}
@@ -32,4 +30,4 @@ const SideDrawerWithLoading = memo(
   )
 )
 
-export { SideDrawerWithLoading }
+export { QDrawerWithLoading }

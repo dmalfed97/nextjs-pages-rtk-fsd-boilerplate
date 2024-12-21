@@ -4,8 +4,8 @@ import { HYDRATE } from 'next-redux-wrapper'
 
 import { ListLoadingStatus } from '~shared/types/loadingStatus'
 
-import type { CategoryModel } from '../models'
 import { type GetCategoriesListQueryParams, categoriesApi } from '../api'
+import type { CategoryModel } from '../models'
 
 interface ICategoriesSlice {
   categories: CategoryModel[]

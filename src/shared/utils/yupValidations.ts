@@ -1,5 +1,5 @@
-import * as Yup from 'yup'
 import { isValid } from 'date-fns'
+import * as Yup from 'yup'
 
 import { PASSWORD_REGEX_CYRILLIC, PASSWORD_REGEX_SPACES, LOGIN_REGEX, EMAIL_REGEX } from './regex'
 

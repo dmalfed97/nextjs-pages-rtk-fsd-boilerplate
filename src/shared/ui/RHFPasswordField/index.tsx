@@ -1,23 +1,20 @@
-import React, { useState } from 'react'
-import type { FieldPath, FieldValues, UseWatchProps } from 'react-hook-form'
-import type { OutlinedTextFieldProps } from '@mui/material'
-import { InputAdornment, IconButton } from '@mui/material'
 import {
   VisibilityOffOutlined as VisibilityOffOutlinedIcon,
   VisibilityOutlined as VisibilityOutlinedIcon,
 } from '@mui/icons-material'
+import { InputAdornment, IconButton, type OutlinedTextFieldProps } from '@mui/material'
+import React, { useState } from 'react'
+import type { FieldPath, FieldValues, UseWatchProps } from 'react-hook-form'
 
-import { TextFieldWithController } from '../TextFieldWithController'
+import { RHFTextField } from '../RHFTextField'
 
-interface PasswordInputWithControllerProps<T extends FieldValues>
+interface RHFPasswordFieldProps<T extends FieldValues>
   extends Omit<OutlinedTextFieldProps, 'variant'> {
   name: FieldPath<T>
   hookFormProps: Omit<UseWatchProps<T>, 'name' | 'render' | 'defaultValue'>
 }
 
-const PasswordInputWithController = function <T extends FieldValues>(
-  props: PasswordInputWithControllerProps<T>
-) {
+const RHFPasswordField = function <T extends FieldValues>(props: RHFPasswordFieldProps<T>) {
   const [showPassword, setShowPassword] = useState<boolean>(false)
 
   // Handlers
@@ -27,7 +24,7 @@ const PasswordInputWithController = function <T extends FieldValues>(
 
   // Renders
   return (
-    <TextFieldWithController
+    <RHFTextField
       type={showPassword ? 'text' : 'password'}
       {...props}
       InputProps={{
@@ -43,4 +40,4 @@ const PasswordInputWithController = function <T extends FieldValues>(
   )
 }
 
-export { PasswordInputWithController }
+export { RHFPasswordField }

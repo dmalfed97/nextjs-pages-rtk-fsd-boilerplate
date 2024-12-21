@@ -1,13 +1,12 @@
-import type { ReactElement, ReactNode } from 'react'
-import React from 'react'
 import { Container } from '@mui/material'
+import React, { type FC, type ReactNode } from 'react'
 import { makeStyles } from 'tss-react/mui'
 
 interface AuthLayoutProps {
   children: ReactNode
 }
 
-const AuthLayout = ({ children }: AuthLayoutProps): ReactElement => {
+const AuthLayout: FC<AuthLayoutProps> = ({ children }) => {
   const { classes } = useStyles()
 
   // Renders

@@ -1,6 +1,6 @@
-import React, { type FC } from 'react'
 import { Stack, Typography } from '@mui/material'
 import { useTranslation } from 'next-i18next'
+import React, { type FC } from 'react'
 
 import { RestorePasswordForm } from '~widgets/RestorePasswordForm'
 

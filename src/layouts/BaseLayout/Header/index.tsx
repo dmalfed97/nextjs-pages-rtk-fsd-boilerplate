@@ -1,16 +1,16 @@
-import React, { useMemo, type FC } from 'react'
 import { AppBar, Toolbar, Stack, Button, Link, Skeleton } from '@mui/material'
+import Image from 'next/image'
 import NavLink from 'next/link'
-import { makeStyles } from 'tss-react/mui'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
-import Image from 'next/image'
+import React, { useMemo, type FC } from 'react'
+import { makeStyles } from 'tss-react/mui'
 
 import { useAuthContext } from '~app/providers/Auth'
-import { AuthRoutesEnum } from '~shared/types/routesEnums'
-import { ProfileHeaderDropdown } from '~widgets/ProfileHeaderDropdown'
 import { LanguageDropdownSelector } from '~entities/language'
 import { useMuiMediaQuery } from '~shared/hooks/useMediaQuery'
+import { AuthRoutesEnum } from '~shared/types/routesEnums'
+import { ProfileHeaderDropdown } from '~widgets/ProfileHeaderDropdown'
 
 type NavBarItem = {
   key: string
@@ -50,7 +50,7 @@ const Header: FC = () => {
           gap={isXL ? 8 : 6}
           justifyContent="space-between"
         >
-          <NavLink href="/">
+          <NavLink href={{ pathname: '/' }}>
             <Image src="" alt="main logo" />
           </NavLink>
 

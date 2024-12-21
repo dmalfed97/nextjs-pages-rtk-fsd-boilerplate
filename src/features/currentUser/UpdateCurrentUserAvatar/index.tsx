@@ -1,14 +1,14 @@
-import React, { useCallback, useState, useMemo } from 'react'
-import type { MouseEvent, ReactElement, ChangeEvent } from 'react'
 import { Button } from '@mui/material'
-import { useTranslation } from 'next-i18next'
-import dynamic from 'next/dynamic'
-import toast from 'react-hot-toast'
 import imageCompression from 'browser-image-compression'
+import dynamic from 'next/dynamic'
+import { useTranslation } from 'next-i18next'
+import React, { useCallback, useState, useMemo } from 'react'
+import type { MouseEvent, ReactElement, ChangeEvent, FC } from 'react'
+import toast from 'react-hot-toast'
 
-import { CustomModal } from '~shared/ui/CustomModal'
 import { useMuiMediaQuery } from '~shared/hooks/useMediaQuery'
-import { UploadImage } from '~shared/ui/UploadImage'
+import { QModal } from '~shared/ui/QModal'
+import { QImageInput } from '~shared/ui/QImageInput'
 
 import { UpdateCurrentUserAvatarSteps } from './steps'
 
@@ -17,10 +17,10 @@ const CropAvatarStep = dynamic(() => import('./CropAvatarStep').then((mod) => mo
 })
 
 interface UpdateCurrentUserAvatarProps {
-  renderTrigger?: (onClick: (event: MouseEvent) => void) => ReactElement
+  renderTrigger?: (onClick: (e: MouseEvent) => void) => ReactElement
 }
 
-const UpdateCurrentUserAvatar = ({ renderTrigger }: UpdateCurrentUserAvatarProps): ReactElement => {
+const UpdateCurrentUserAvatar: FC<UpdateCurrentUserAvatarProps> = ({ renderTrigger }) => {
   const { t } = useTranslation(['common', 'profile'])
 
   const { isSM } = useMuiMediaQuery()
@@ -102,7 +102,7 @@ const UpdateCurrentUserAvatar = ({ renderTrigger }: UpdateCurrentUserAvatarProps
   const getModalContent = useMemo((): ReactElement => {
     if (step === UpdateCurrentUserAvatarSteps.SELECT_NEW_AVATAR_STEP) {
       return (
-        <UploadImage
+        <QImageInput
           onSelectPhoto={selectImage}
           title={t('profile:modal.selectPhoto.text')}
           loading={isPreparingImage}
@@ -124,9 +124,9 @@ const UpdateCurrentUserAvatar = ({ renderTrigger }: UpdateCurrentUserAvatarProps
         </Button>
       )}
 
-      <CustomModal open={modalIsOpened} onClose={handleCloseModal} title={getModalTitle}>
+      <QModal open={modalIsOpened} onClose={handleCloseModal} title={getModalTitle}>
         {getModalContent}
-      </CustomModal>
+      </QModal>
     </>
   )
 }

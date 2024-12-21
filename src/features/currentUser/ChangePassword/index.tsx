@@ -1,10 +1,10 @@
-import type { MouseEvent, ReactElement } from 'react'
-import React, { useState, useCallback, useMemo, useEffect } from 'react'
-import { useTranslation } from 'next-i18next'
 import { Button } from '@mui/material'
 import dynamic from 'next/dynamic'
+import { useTranslation } from 'next-i18next'
+import type { MouseEvent, ReactElement, FC } from 'react'
+import React, { useState, useCallback, useMemo, useEffect } from 'react'
 
-import { CustomModal } from '~shared/ui/CustomModal'
+import { QModal } from '~shared/ui/QModal'
 
 import { ChangePasswordModalSteps } from './step'
 
@@ -12,11 +12,11 @@ import { ChangePasswordModalSteps } from './step'
 const ModalContent = dynamic(() => import('./ModalContent').then((m) => m.ModalContent))
 
 interface UpdatePasswordProps {
-  renderTrigger?: (onClick: (event: MouseEvent) => void) => ReactElement
+  renderTrigger?: (onClick: (e: MouseEvent) => void) => ReactElement
   onClose?: () => void
 }
 
-const UpdatePassword = ({ renderTrigger, onClose }: UpdatePasswordProps): ReactElement => {
+const UpdatePassword: FC<UpdatePasswordProps> = ({ renderTrigger, onClose }) => {
   const { t } = useTranslation(['common', 'profile'])
 
   const [modalIsOpened, setModalIsOpened] = useState<boolean>(false)
@@ -70,7 +70,7 @@ const UpdatePassword = ({ renderTrigger, onClose }: UpdatePasswordProps): ReactE
         </Button>
       )}
 
-      <CustomModal
+      <QModal
         onClose={handleCloseModal}
         open={modalIsOpened}
         title={getModalTitle}
@@ -81,7 +81,7 @@ const UpdatePassword = ({ renderTrigger, onClose }: UpdatePasswordProps): ReactE
             <ModalContent step={step} setStep={setStep} handleCloseModal={handleCloseModal} />
           )}
         </>
-      </CustomModal>
+      </QModal>
     </>
   )
 }

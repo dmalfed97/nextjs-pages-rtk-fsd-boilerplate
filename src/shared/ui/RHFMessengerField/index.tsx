@@ -1,39 +1,37 @@
-import type { ReactElement, ReactNode } from 'react'
-import React, { useEffect, useState, useRef } from 'react'
-import { makeStyles } from 'tss-react/mui'
 import type { SelectProps, TextFieldProps } from '@mui/material'
 import { InputAdornment, InputLabel, MenuItem, Select, Stack, TextField } from '@mui/material'
-import type { FieldPath, FieldValues, UseWatchProps } from 'react-hook-form'
-import { Controller, useFormContext } from 'react-hook-form'
 import Image from 'next/image'
+import React, { useEffect, useState, useRef, type ReactNode } from 'react'
+import { Controller, useFormContext } from 'react-hook-form'
+import type { FieldPath, FieldValues, UseWatchProps } from 'react-hook-form'
+import { makeStyles } from 'tss-react/mui'
 
-import { validatePhone } from '../../utils/validation/validatePhone'
-import { validateMessenger } from '../../utils/validation/validateMessenger'
+import { messengersList, type MessengersListItem } from './messengers'
 import { MessengerEnum } from '../../types/messenger'
-import type { MessengersListItem } from './messengers'
-import { messengersList } from './messengers'
+import { validateMessenger } from '../../utils/validation/validateMessenger'
+import { validatePhone } from '../../utils/validation/validatePhone'
 
-interface InputWithControllerProps<T extends FieldValues> extends Omit<TextFieldProps, 'variant'> {
+interface RHFTextFieldProps<T extends FieldValues> extends Omit<TextFieldProps, 'variant'> {
   name: FieldPath<T>
   hookFormProps: Omit<UseWatchProps<T>, 'name' | 'render' | 'defaultValue'>
 }
-interface SelectWithControllerProps<T extends FieldValues>
+interface RHFSelectProps<T extends FieldValues>
   extends Omit<SelectProps<MessengerEnum>, 'variant'> {
   name: FieldPath<T>
   hookFormProps: Omit<UseWatchProps<T>, 'name' | 'render' | 'defaultValue'>
 }
 
-interface MessengerInputProps<T extends FieldValues> {
+interface RHFMessengerFieldProps<T extends FieldValues> {
   label?: ReactNode
-  selectProps: SelectWithControllerProps<T>
-  inputProps: InputWithControllerProps<T>
+  selectProps: RHFSelectProps<T>
+  inputProps: RHFTextFieldProps<T>
 }
 
-const MessengerInput = function <T extends FieldValues>({
+const RHFMessengerField = function <T extends FieldValues>({
   label,
   selectProps,
   inputProps,
-}: MessengerInputProps<T>): ReactElement {
+}: RHFMessengerFieldProps<T>) {
   const { name: selectName, hookFormProps: selectHookFormProps, ...selectRest } = selectProps
   const { name: inputName, hookFormProps: inputHookFormProps, ...inputRest } = inputProps
 
@@ -111,7 +109,7 @@ const MessengerInput = function <T extends FieldValues>({
               inputRef={field.ref}
               onFocus={() => combinedInputRef?.current?.focus()}
               onBlur={() => combinedInputRef?.current?.blur()}
-              // Пока не буду вынсить ф-ию отсюда
+              // Пока не буду выносить ф-ию отсюда
               onChange={(event) => {
                 let newValue = event.target.value
                 if (
@@ -173,4 +171,4 @@ const useStyles = makeStyles()(() => ({
   },
 }))
 
-export { MessengerInput }
+export { RHFMessengerField }

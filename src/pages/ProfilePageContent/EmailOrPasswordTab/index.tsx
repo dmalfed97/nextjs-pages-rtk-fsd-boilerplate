@@ -1,12 +1,11 @@
-import type { ReactElement } from 'react'
-import React from 'react'
-import { useTranslation } from 'next-i18next'
 import { Button, Stack, Typography } from '@mui/material'
+import { useTranslation } from 'next-i18next'
+import React, { type FC } from 'react'
 
 import { UpdatePassword } from '~features/currentUser/ChangePassword'
 import { currentUserSelectors } from '~entities/currentUser'
 
-const EmailOrPasswordTab = (): ReactElement => {
+const EmailOrPasswordTab: FC = () => {
   const { t } = useTranslation('common')
 
   const currentUser = currentUserSelectors.useCurrentUser()

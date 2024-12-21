@@ -1,6 +1,6 @@
-import WhatsappIcon from '~public/icons/whatsapp.svg'
-import ViberIcon from '~public/icons/viber.svg'
 import TelegramIcon from '~public/icons/telegram.svg'
+import ViberIcon from '~public/icons/viber.svg'
+import WhatsappIcon from '~public/icons/whatsapp.svg'
 
 import { MessengerEnum } from '../../types/messenger'
 

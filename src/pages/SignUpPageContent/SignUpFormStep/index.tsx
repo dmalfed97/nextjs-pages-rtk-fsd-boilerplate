@@ -1,8 +1,8 @@
-import React, { type FC } from 'react'
 import { Button, Divider, Stack, Typography } from '@mui/material'
-import NavLink from 'next/link'
 import dynamic from 'next/dynamic'
+import NavLink from 'next/link'
 import { useTranslation } from 'next-i18next'
+import React, { type FC } from 'react'
 
 import { RegistrationForm } from '~widgets/RegistrationForm'
 import { AuthRoutesEnum } from '~shared/types/routesEnums'

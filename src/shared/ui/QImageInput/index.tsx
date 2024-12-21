@@ -1,17 +1,16 @@
-import type { ChangeEvent, ReactElement } from 'react'
-import React from 'react'
+import { LoadingButton } from '@mui/lab'
 import { Stack, Typography } from '@mui/material'
 import { useTranslation } from 'next-i18next'
+import React, { type ChangeEvent, type FC } from 'react'
 import { makeStyles } from 'tss-react/mui'
-import { LoadingButton } from '@mui/lab'
 
-interface UploadImageProps {
+interface QImageInputProps {
   onSelectPhoto: (e: ChangeEvent<HTMLInputElement>) => void
   title?: string
   loading?: boolean
 }
 
-const UploadImage = ({ onSelectPhoto, title, loading = false }: UploadImageProps): ReactElement => {
+const QImageInput: FC<QImageInputProps> = ({ onSelectPhoto, title, loading = false }) => {
   const { t } = useTranslation('common')
 
   const { classes } = useStyles()
@@ -55,4 +54,4 @@ const useStyles = makeStyles()((theme) => ({
   },
 }))
 
-export { UploadImage }
+export { QImageInput }
