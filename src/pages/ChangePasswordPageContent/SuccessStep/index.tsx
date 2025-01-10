@@ -9,7 +9,7 @@ const SuccessStep: FC = () => {
   // Renders
   return (
     <Stack gap={4.5} alignItems="center">
-      <Typography variant="h3">{t('auth:confirmRegistration.title')}</Typography>
+      <Typography variant="h3">{t('auth:screens.confirmRegistration.title')}</Typography>
 
       <Button LinkComponent={NavLink} href="/" variant="contained">
         {t('button.backToHomePage')}

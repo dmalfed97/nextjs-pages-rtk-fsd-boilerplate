@@ -1,3 +1,26 @@
 {
-
+  "email": {
+    "incorrectFormat": ""
+  },
+  "firstName": {
+    "min": ""
+  },
+  "inputField": {
+    "required": ""
+  },
+  "lastName": {
+    "min": ""
+  },
+  "login": {
+    "invalidSymbols": "",
+    "min": ""
+  },
+  "password": {
+    "cyrillic": "",
+    "min": "",
+    "spaces": ""
+  },
+  "textField": {
+    "max": ""
+  }
 }

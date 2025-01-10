@@ -5,14 +5,18 @@ export class TimeHelper {
    * Generates an array of time values in 'hh:mm' format with the specified step in minutes.
    *
    * @param stepInMinutes - The step value in minutes. Must be greater than 0 and divide 60 without a remainder.
+   * @param t - TFunction from i18next
    * @returns An array of time objects with 'label' and 'value' fields. For example: [{ label: '00:00', value: '00:00' }, ...]
    * @throws Throws an error if the time step is invalid.
    */
-  static generateTimeArray(stepInMinutes: number): { label: string; value: string }[] {
+  static generateTimeArray(
+    stepInMinutes: number,
+    t: TFunction
+  ): { label: string; value: string }[] {
     const times: { label: string; value: string }[] = []
 
     if (stepInMinutes <= 0 || stepInMinutes > 60 || 60 % stepInMinutes !== 0) {
-      throw new Error('Invalid step in minutes.')
+      throw new Error(t('errors.invalidTimeInterval'))
     }
 
     for (let hour = 0; hour < 24; hour++) {
@@ -25,7 +29,6 @@ export class TimeHelper {
     return times
   }
 
-  // FIXME translations
   static getFormattedTimeString = (durationInMinutes: number | null | undefined, t: TFunction) => {
     if (!durationInMinutes) {
       return '-'
@@ -43,8 +46,22 @@ export class TimeHelper {
       minutes = durationInMinutes % 60
     }
 
-    return `${hours ? `${t('timeMeasurement.hour', { count: hours, ns: 'common' })}` : ''} ${
-      minutes ? `${t('timeMeasurement.minute', { count: minutes, ns: 'common' })}` : ''
+    return `${
+      hours
+        ? `${t('timeMeasurement.hour', {
+            count: hours,
+            ns: 'common',
+            defaultValue: 'timeMeasurement.hour_one',
+          })}`
+        : ''
+    } ${
+      minutes
+        ? `${t('timeMeasurement.minute', {
+            count: minutes,
+            ns: 'common',
+            defaultValue: 'timeMeasurement.minute_one',
+          })}`
+        : ''
     }`.trim()
   }
 }

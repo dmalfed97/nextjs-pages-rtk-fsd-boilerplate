@@ -45,7 +45,7 @@ const ChangePasswordModalContent: FC<ChangePasswordModalContentProps> = ({
 
   // Handlers
   const showErrorMessage = (): void => {
-    toast.error('errors.generic')
+    toast.error(t('errors.generic'))
   }
 
   const handleRestorePasswordClick = (e: MouseEvent): void => {

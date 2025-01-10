@@ -1,3 +1,24 @@
 {
-
+  "block": {
+    "description": {
+      "message": "",
+      "title": ""
+    }
+  },
+  "modal": {
+    "changePassword": {
+      "title": ""
+    },
+    "cropPhoto": {
+      "title": ""
+    },
+    "passwordReset": {
+      "message": "",
+      "title": ""
+    },
+    "selectPhoto": {
+      "text": "",
+      "title": ""
+    }
+  }
 }

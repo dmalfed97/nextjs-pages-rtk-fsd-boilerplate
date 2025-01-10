@@ -1,8 +1,8 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { LoadingButton } from '@mui/lab'
-import { Stack, Typography, Checkbox, Link /*, MenuItem */ } from '@mui/material'
+import { Stack, Typography, Checkbox, Link, useTheme /*, MenuItem */ } from '@mui/material'
 import NavLink from 'next/link'
-import { useTranslation } from 'next-i18next'
+import { Trans, useTranslation } from 'next-i18next'
 import React, { useState, type FC, type ChangeEvent } from 'react'
 import { FormProvider, useForm, type SubmitHandler } from 'react-hook-form'
 import toast from 'react-hot-toast'
@@ -29,6 +29,8 @@ interface RegistrationFormProps {
 
 const RegistrationForm: FC<RegistrationFormProps> = ({ onSuccess }) => {
   const { t } = useTranslation(['common', 'auth'])
+
+  const { palette } = useTheme()
 
   const dispatch = useAppDispatch()
   const uploadingStatus = authSelectors.useUploadingStatus()
@@ -147,23 +149,32 @@ const RegistrationForm: FC<RegistrationFormProps> = ({ onSuccess }) => {
           />
 
           <Typography variant="subtitle2">
-            {`${t('auth:screens.registration.rules.iAgree')} `}
-
-            <Link component={NavLink} href={{ pathname: '' }} color="#1FAE4C">
-              {t('auth:screens.registration.rules.termsOfService')}
-            </Link>
-
-            {t('auth:screens.registration.rules.including')}
-
-            <Link component={NavLink} href={{ pathname: '' }} color="#1FAE4C">
-              {t('auth:screens.registration.rules.userAgreement')}
-            </Link>
-
-            {t('auth:screens.registration.rules.and')}
-
-            <Link component={NavLink} href={{ pathname: '' }} color="#1FAE4C">
-              {t('auth:screens.registration.rules.privacyPolicy')}
-            </Link>
+            <Trans
+              i18nKey="auth:screens.registration.rules"
+              components={{
+                link1: (
+                  <Link
+                    component={NavLink}
+                    href={{ pathname: t('links.termsOfService') }}
+                    color={palette.primary.main}
+                  />
+                ),
+                link2: (
+                  <Link
+                    component={NavLink}
+                    href={{ pathname: t('links.userAgreement') }}
+                    color={palette.primary.main}
+                  />
+                ),
+                link3: (
+                  <Link
+                    component={NavLink}
+                    href={{ pathname: t('links.privacyPolicy') }}
+                    color={palette.primary.main}
+                  />
+                ),
+              }}
+            />
           </Typography>
         </Stack>
 

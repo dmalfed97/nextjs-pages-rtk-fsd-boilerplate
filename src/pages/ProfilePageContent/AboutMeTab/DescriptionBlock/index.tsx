@@ -19,11 +19,11 @@ const DescriptionBlock: FC = () => {
   return (
     <Stack alignItems="flex-start" gap={2}>
       <Stack alignItems="flex-start" gap={2}>
-        <Typography variant="h4">{t('profile:block.coverLetter')}</Typography>
+        <Typography variant="h4">{t('profile:block.description.title')}</Typography>
 
         {!description && (
           <Typography color="textSecondary" variant="body1">
-            {t('profile:screens.coverLetter.message')}
+            {t('profile:block.description.message')}
           </Typography>
         )}
       </Stack>

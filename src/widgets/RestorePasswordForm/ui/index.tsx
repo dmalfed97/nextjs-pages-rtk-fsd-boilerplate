@@ -31,7 +31,7 @@ const RestorePasswordForm: FC<RestorePasswordFormProps> = ({ onSuccess }) => {
   const params = useParams<{ token: string }>()
   const router = useRouter()
 
-  const { t } = useTranslation('common')
+  const { t } = useTranslation(['common', 'auth'])
 
   const { classes } = useStyles()
 

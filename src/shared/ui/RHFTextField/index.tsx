@@ -38,7 +38,7 @@ const RHFTextField = function <T extends FieldValues>({
       return fieldState.error?.message
     }
     if (fieldState.error?.message) {
-      return t(fieldState.error?.message, { defaultValue: t('error.fieldError') })
+      return t(fieldState.error?.message, { defaultValue: t('errors.fieldError') })
     }
     return rest.helperText
   }

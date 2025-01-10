@@ -42,7 +42,7 @@ const RestoreAccessModalStep: FC<RestoreAccessModalStepProps> = ({ handleCloseMo
 
   // Handlers
   const showErrorMessage = (): void => {
-    toast.error('errors.generic')
+    toast.error(t('errors.generic'))
   }
 
   const onSubmit: SubmitHandler<RestorePasswordRequestFormValues> = (values) => {

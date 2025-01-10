@@ -49,10 +49,10 @@ const SignUpConfirmPageContent: FC = () => {
   return (
     <AuthLayout>
       <Stack gap={4.5} alignItems="center">
-        <Typography variant="h3">{t('auth:registrationComplete.title')}</Typography>
+        <Typography variant="h3">{t('auth:screens.registrationComplete.title')}</Typography>
 
         <Typography variant="body1" textAlign="center">
-          {t('auth:registrationComplete.message')}
+          {t('auth:screens.registrationComplete.message')}
         </Typography>
 
         <Button LinkComponent={NavLink} href="/" variant="contained">

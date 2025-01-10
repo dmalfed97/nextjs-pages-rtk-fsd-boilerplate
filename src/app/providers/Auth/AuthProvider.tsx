@@ -1,14 +1,14 @@
-import { useTranslation } from 'next-i18next'
 import type { PropsWithChildren, ReactElement } from 'react'
 import React, { memo, useEffect, useState, useInsertionEffect } from 'react'
+import { useTranslation } from 'next-i18next'
 
 import { authStore, authSelectors } from '~entities/auth'
 import { currentUserStore } from '~entities/currentUser'
 import { HttpApi } from '~shared/api/base'
 import useAppDispatch from '~shared/hooks/useAppDispatch'
-import type { LanguageEnum } from '~shared/types/language'
 import { UploadingStatus } from '~shared/types/loadingStatus'
 import { ONE_MINUTE, ONE_SECOND } from '~shared/utils/intervals'
+import { type LanguageEnum } from '~shared/types/language'
 
 import { AuthContext } from './AuthContext'
 import { appConfig } from '../../config'

@@ -1,3 +1,75 @@
 {
-
+  "button": {
+    "aboutMe": "",
+    "backToHomePage": "",
+    "browsePhoto": "",
+    "cancel": "",
+    "changeImage": "",
+    "changePassword": "",
+    "createAccount": "",
+    "createNewAccount": "",
+    "emailAndPassword": "",
+    "iForgotPassword": "",
+    "logIn": "",
+    "logMeIn": "",
+    "logOut": "",
+    "myAccount": "",
+    "reset": "",
+    "save": "",
+    "sendRecoveryLink": "",
+    "signIn": "",
+    "yes": ""
+  },
+  "codeInput": {
+    "incorrectCode": ""
+  },
+  "errors": {
+    "api": {
+      "429": "",
+      "503": "",
+      "serverUnavailable": ""
+    },
+    "fieldError": "",
+    "fileUploadingError": "",
+    "generic": "",
+    "invalidTimeInterval": ""
+  },
+  "input": {
+    "confirmPassword": {
+      "label": ""
+    },
+    "currentPassword": {
+      "label": ""
+    },
+    "email": {
+      "label": ""
+    },
+    "login": {
+      "label": ""
+    },
+    "newPassword": {
+      "label": ""
+    },
+    "password": {
+      "description": {
+        "oneDigit": "",
+        "oneUppercaseLetter": "",
+        "passwordMinLength": ""
+      },
+      "label": ""
+    }
+  },
+  "links": {
+    "privacyPolicy": "",
+    "termsOfService": "",
+    "userAgreement": ""
+  },
+  "timeMeasurement": {
+    "hour_few": "",
+    "hour_many": "",
+    "hour_one": "",
+    "minute_few": "{{count}} минуты",
+    "minute_many": "{{count}} минут",
+    "minute_one": "{{count}} минута"
+  }
 }

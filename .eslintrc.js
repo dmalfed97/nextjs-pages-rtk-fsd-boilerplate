@@ -5,7 +5,8 @@ module.exports = {
     'node_modules/',
     'public/',
     'eslint/',
-    '.eslintrc.js'
+    '.eslintrc.js',
+    'scripts/'
   ],
   "env": {
     "browser": true,
