@@ -1,75 +1,75 @@
 {
   "button": {
-    "aboutMe": "",
-    "backToHomePage": "",
-    "browsePhoto": "",
-    "cancel": "",
-    "changeImage": "",
-    "changePassword": "",
-    "createAccount": "",
-    "createNewAccount": "",
-    "emailAndPassword": "",
-    "iForgotPassword": "",
-    "logIn": "",
-    "logMeIn": "",
-    "logOut": "",
-    "myAccount": "",
-    "reset": "",
-    "save": "",
-    "sendRecoveryLink": "",
-    "signIn": "",
-    "yes": ""
+    "aboutMe": "About me",
+    "backToHomePage": "Back to home page",
+    "browsePhoto": "Browse photo",
+    "cancel": "Cancel",
+    "changeImage": "Change image",
+    "changePassword": "Change password",
+    "createAccount": "Create account",
+    "createNewAccount": "Create new account",
+    "emailAndPassword": "Email and password",
+    "iForgotPassword": "I forgot password",
+    "logIn": "Log in",
+    "logMeIn": "Log me in",
+    "logOut": "Log out",
+    "myAccount": "My account",
+    "reset": "Reset",
+    "save": "Save",
+    "sendRecoveryLink": "Send recovery link",
+    "signIn": "Sign in",
+    "yes": "Yes"
   },
   "codeInput": {
-    "incorrectCode": ""
+    "incorrectCode": "Incorrect code"
   },
   "errors": {
     "api": {
-      "429": "",
-      "503": "",
-      "serverUnavailable": ""
+      "429": "429, Too many requests",
+      "503": "503, Server is temporary unavailable",
+      "serverUnavailable": "Server is temporary unavailable"
     },
-    "fieldError": "",
-    "fileUploadingError": "",
-    "generic": "",
-    "invalidTimeInterval": ""
+    "fieldError": "Field value contains error",
+    "fileUploadingError": "An error occurred while uploading the file",
+    "generic": "Something wrong happened",
+    "invalidTimeInterval": "Invalid time interval"
   },
   "input": {
     "confirmPassword": {
-      "label": ""
+      "label": "Confirm password"
     },
     "currentPassword": {
-      "label": ""
+      "label": "Current password"
     },
     "email": {
-      "label": ""
+      "label": "Email"
     },
     "login": {
-      "label": ""
+      "label": "Login"
     },
     "newPassword": {
-      "label": ""
+      "label": "New password"
     },
     "password": {
       "description": {
-        "oneDigit": "",
-        "oneUppercaseLetter": "",
-        "passwordMinLength": ""
+        "oneDigit": "Password should include at least one digit (0-9).",
+        "oneUppercaseLetter": "Password must contain at least one uppercase letter (A-Z).",
+        "passwordMinLength": "The password length should be at least 8 characters."
       },
-      "label": ""
+      "label": "Password"
     }
   },
   "links": {
-    "privacyPolicy": "",
-    "termsOfService": "",
-    "userAgreement": ""
+    "privacyPolicy": "https://google.com",
+    "termsOfService": "https://google.com",
+    "userAgreement": "https://google.com"
   },
   "timeMeasurement": {
-    "hour_few": "",
-    "hour_many": "",
-    "hour_one": "",
-    "minute_few": "",
-    "minute_many": "",
-    "minute_one": ""
+    "hour_few": "{{count}} hours",
+    "hour_many": "{{count}} hours",
+    "hour_one": "{{count}} hour",
+    "minute_few": "{{count}} minutes",
+    "minute_many": "{{count}} minutes",
+    "minute_one": "{{count}} minute"
   }
 }

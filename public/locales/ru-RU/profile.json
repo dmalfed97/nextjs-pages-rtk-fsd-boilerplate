@@ -1,24 +1,24 @@
 {
   "block": {
     "description": {
-      "message": "",
-      "title": ""
+      "message": "Заполните описание профиля, чтобы его могли увидеть другие пользователи",
+      "title": "Описание"
     }
   },
   "modal": {
     "changePassword": {
-      "title": ""
+      "title": "Сменить пароль"
     },
     "cropPhoto": {
-      "title": ""
+      "title": "Обрезать фото"
     },
     "passwordReset": {
-      "message": "",
-      "title": ""
+      "message": "Ссылка на восстановление пароля будет выслана на email указанный ниже",
+      "title": "Сбросить пароль"
     },
     "selectPhoto": {
-      "text": "",
-      "title": ""
+      "text": "Загрузите фотографию в формате .jpeg или .png",
+      "title": "Выбрать фото"
     }
   }
 }

@@ -1,26 +1,26 @@
 {
   "email": {
-    "incorrectFormat": ""
+    "incorrectFormat": "Invalid Email format"
   },
   "firstName": {
-    "min": ""
+    "min": "Name must contain at least 2 characters"
   },
   "inputField": {
-    "required": ""
+    "required": "Field is required"
   },
   "lastName": {
-    "min": ""
+    "min": "Lastname must contain at least 2 characters"
   },
   "login": {
-    "invalidSymbols": "",
-    "min": ""
+    "invalidSymbols": "Login contains invalid characters",
+    "min": "Login must contain at least 2 symbols"
   },
   "password": {
-    "cyrillic": "",
-    "min": "",
-    "spaces": ""
+    "cyrillic": "Password must not contain cyrillic characters",
+    "min": "Password must contain at least 8 characters",
+    "spaces": "Password must not contain spaces"
   },
   "textField": {
-    "max": ""
+    "max": "Message length must not exceed {{max}} characters"
   }
 }
