@@ -13,7 +13,7 @@ interface QAccordionProps extends PropsWithChildren {
 
 const QAccordion = memo(
   ({ children, onChange, expanded, summaryContent, error }: QAccordionProps) => {
-    const { classes } = useStyles()
+    const { classes, theme } = useStyles()
 
     // Renders
     return (
@@ -22,7 +22,7 @@ const QAccordion = memo(
           <Stack direction="row" justifyContent="stretch" gap={2} width="100%">
             <Box flex={1}>{summaryContent}</Box>
 
-            {error && <WarningIcon style={{ marginRight: 10, color: 'red' }} />}
+            {error && <WarningIcon style={{ marginRight: 10, color: theme.palette.error.main }} />}
           </Stack>
         </AccordionSummary>
 

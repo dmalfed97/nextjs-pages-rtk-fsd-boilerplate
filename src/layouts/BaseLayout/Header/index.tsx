@@ -101,7 +101,7 @@ const useStyles = makeStyles()((theme) => ({
     alignItems: 'center',
     height: 100,
     padding: theme.spacing(0, 3.5),
-    backgroundColor: 'white',
+    backgroundColor: theme.palette.background.default,
     boxShadow: 'unset',
     [theme.breakpoints.up('xl')]: {
       padding: theme.spacing(0, 12.5),

@@ -1,32 +1,32 @@
 import { makeStyles } from 'tss-react/mui'
 
-export const useStyles = makeStyles()(() => ({
+export const useStyles = makeStyles()((theme) => ({
   select: {
     '& .MuiTextField-root': {
       width: '100%',
-      color: 'black',
+      color: theme.palette.text.primary,
     },
     '& .MuiInputBase-root': {
       borderRadius: 8,
-      background: '#FFF',
+      background: theme.palette.background.paper,
     },
     '& .MuiIconButton-root': {
       marginRight: -5,
     },
     '& .MuiOutlinedInput-notchedOutline': {
-      borderColor: '#E0E0E0',
+      borderColor: theme.palette.grey[300],
     },
     '& .MuiSvgIcon-root': {
-      color: '#E0E0E0',
+      color: theme.palette.grey[300],
     },
     '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
-      borderColor: '#1FAE4C !important',
+      borderColor: `${theme.palette.primary.main} !important`,
     },
     '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
-      borderColor: '#1FAE4C !important',
+      borderColor: `${theme.palette.primary.main} !important`,
     },
     '& .MuiInputLabel-root.Mui-focused': {
-      color: '#1FAE4C',
+      color: theme.palette.primary.main,
     },
   },
 }))

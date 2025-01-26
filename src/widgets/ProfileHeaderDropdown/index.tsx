@@ -12,7 +12,7 @@ import { PrivateRoutesEnum } from '~shared/types/routesEnums'
 const ProfileHeaderDropdown: FC = () => {
   const { t } = useTranslation('common')
 
-  const { classes } = useStyles()
+  const { classes, theme } = useStyles()
 
   const currentUser = currentUserSelectors.useCurrentUser()
 
@@ -75,7 +75,7 @@ const ProfileHeaderDropdown: FC = () => {
 
         <LogoutButton
           renderTrigger={(onClick) => (
-            <MenuItem onClick={onClick} sx={{ color: 'red' }}>
+            <MenuItem onClick={onClick} sx={{ color: theme.palette.error.main }}>
               {t('button.logOut')}
             </MenuItem>
           )}
@@ -86,7 +86,7 @@ const ProfileHeaderDropdown: FC = () => {
   )
 }
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()((theme) => ({
   triggerContainer: {
     cursor: 'pointer',
     width: 200,
@@ -97,7 +97,7 @@ const useStyles = makeStyles()(() => ({
     fontSize: 14,
   },
   username: {
-    color: 'black',
+    color: theme.palette.text.primary,
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     whiteSpace: 'pre-wrap',

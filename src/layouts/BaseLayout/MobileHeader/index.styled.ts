@@ -5,7 +5,7 @@ export const useStyles = makeStyles()((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     height: 60,
-    backgroundColor: 'white',
+    backgroundColor: theme.palette.background.default,
     boxShadow: 'unset',
     borderBottom: `1px solid ${theme.palette.grey[100]}`,
   },

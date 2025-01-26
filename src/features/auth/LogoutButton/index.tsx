@@ -78,7 +78,7 @@ const LogoutButton: FC<LogoutButtonProps> = ({ className, renderTrigger, onClose
   )
 }
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()((theme) => ({
   container: {
     padding: '40px 60px',
   },
@@ -91,9 +91,10 @@ const useStyles = makeStyles()(() => ({
     transition: 'all .3s',
     justifyContent: 'flex-start',
     padding: 10,
-    background: 'white',
-    color: 'red',
+    background: theme.palette.background.default,
+    color: theme.palette.error.main,
     '&:hover': {
+      // FIXME
       background: 'rgba(190, 190, 190, 0.35)',
     },
   },
@@ -103,8 +104,9 @@ const useStyles = makeStyles()(() => ({
     fontWeight: 400,
   },
   cancelButton: {
+    // FIXME
     border: '1px solid rgba(48, 38, 85, .1)',
-    color: 'black',
+    color: theme.palette.text.primary,
   },
 }))
 

@@ -12,8 +12,8 @@ export const palette: IPaletteOptions = {
     paper: '#FFFFFF',
   },
   primary: {
-    main: '#1FAE4C',
-    dark: '#209846',
+    main: '#1E90FF',
+    dark: '#1C86EE',
     contrastText: '#FFFFFF',
   },
   grey: {
@@ -23,6 +23,7 @@ export const palette: IPaletteOptions = {
     300: '#E0E0E0',
     500: '#AAAAAA',
     600: '#8E8E8E',
+    900: '#101010',
   },
   custom: {},
 }

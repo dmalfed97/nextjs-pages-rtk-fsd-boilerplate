@@ -5,7 +5,7 @@ import { useParams } from 'next/navigation'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import React, { useEffect, type FC } from 'react'
-import { FormProvider, useForm, type SubmitHandler } from 'react-hook-form'
+import { FormProvider, useForm, type SubmitHandler, type SubmitErrorHandler } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
 import { authStore, authSelectors, RestorePasswordFormFields } from '~entities/auth'
@@ -63,12 +63,15 @@ const RestorePasswordForm: FC<RestorePasswordFormProps> = ({ onSuccess }) => {
       }
     })
   }
-  // FIXME onErrorSubmit
+
+  const onInvalid: SubmitErrorHandler<RestorePasswordValidationSchemaType> = () => {
+    toast.error(t('errors.generic'))
+  }
 
   // Renders
   return (
     <FormProvider {...formMethods}>
-      <Stack component="form" gap={3} onSubmit={handleSubmit(onSubmit)}>
+      <Stack component="form" gap={3} onSubmit={handleSubmit(onSubmit, onInvalid)}>
         <Stack gap={1} alignSelf="stretch">
           <RHFPasswordField
             fullWidth

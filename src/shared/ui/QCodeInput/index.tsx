@@ -35,16 +35,16 @@ const QCodeInput: FC<QCodeInputProps> = ({ classNames, codeIsInvalid, ...rest })
   )
 }
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()((theme) => ({
   container: {
     '&.error': {
-      border: '1px solid red',
+      border: `1px solid ${theme.palette.error.main}`,
     },
   },
   character: {},
   characterSelected: {},
   error: {
-    color: 'red',
+    color: theme.palette.error.main,
     fontSize: 10,
   },
 }))

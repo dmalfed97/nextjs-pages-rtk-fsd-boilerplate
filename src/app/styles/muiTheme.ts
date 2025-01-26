@@ -49,7 +49,7 @@ export const theme = createTheme({
     MuiLink: {
       styleOverrides: {
         root: ({ theme }) => ({
-          color: 'black',
+          color: theme.palette.text.primary,
           textDecoration: 'none',
           '&:hover': {
             color: theme.palette.primary.main,

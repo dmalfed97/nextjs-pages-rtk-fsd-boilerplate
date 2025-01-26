@@ -148,6 +148,7 @@ const RHFMessengerField = function <T extends FieldValues>({
 
 const useStyles = makeStyles()(() => ({
   container: {
+    // FIXME
     border: '1px solid rgba(0, 0, 0, 0.23)',
     borderRadius: 4,
     '&:focus': {},
