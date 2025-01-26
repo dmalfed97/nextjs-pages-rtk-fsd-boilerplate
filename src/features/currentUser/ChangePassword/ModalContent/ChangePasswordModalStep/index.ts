@@ -1,1 +1,1 @@
-export { ChangePasswordModalContent } from './ui'
+export * from './ui'

@@ -31,7 +31,7 @@ const MuiProvider: FC<PropsWithChildren> = ({ children }) => {
       let localeText: Partial<PickersLocaleText<Date>> | undefined
       let selectedTheme: Theme
 
-      switch (i18n.language) {
+      switch (i18n.language as LanguageEnum) {
         case LanguageEnum.RU: {
           const ruLocale = await import('date-fns/locale/ru')
           const { ruRU: ruRULocaleText } = await import('@mui/x-date-pickers/locales')

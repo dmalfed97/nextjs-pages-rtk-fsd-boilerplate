@@ -13,7 +13,7 @@ interface ICategoriesSchema {
 
 const CategoriesSchema: React.FC<ICategoriesSchema> = ({ categories }) => {
   const schemaData = {
-    '@context': 'http://schema.org',
+    '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: 'Service Categories',
     itemListElement: categories.map((category, index) => ({

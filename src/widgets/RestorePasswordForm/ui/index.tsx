@@ -8,12 +8,7 @@ import React, { useEffect, type FC } from 'react'
 import { FormProvider, useForm, type SubmitHandler } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
-import {
-  authStore,
-  authSelectors,
-  RestorePasswordFormFields,
-  type RestorePasswordFormValues,
-} from '~entities/auth'
+import { authStore, authSelectors, RestorePasswordFormFields } from '~entities/auth'
 import type { BaseResponseWrapper } from '~shared/api/base'
 import useAppDispatch from '~shared/hooks/useAppDispatch'
 import { UploadingStatus } from '~shared/types/loadingStatus'
@@ -21,7 +16,10 @@ import { AuthRoutesEnum } from '~shared/types/routesEnums'
 import { RHFPasswordField } from '~shared/ui/RHFPasswordField'
 
 import { useStyles } from './index.styled'
-import { RestorePasswordValidationSchema } from '../validation'
+import {
+  RestorePasswordValidationSchema,
+  type RestorePasswordValidationSchemaType,
+} from '../validation'
 
 interface RestorePasswordFormProps {
   onSuccess?: () => void
@@ -38,9 +36,8 @@ const RestorePasswordForm: FC<RestorePasswordFormProps> = ({ onSuccess }) => {
   const dispatch = useAppDispatch()
   const uploadingStatus = authSelectors.useUploadingStatus()
 
-  const formMethods = useForm<RestorePasswordFormValues>({
-    // @ts-expect-error typical yup error
-    resolver: yupResolver<RestorePasswordFormValues>(RestorePasswordValidationSchema),
+  const formMethods = useForm<RestorePasswordValidationSchemaType>({
+    resolver: yupResolver(RestorePasswordValidationSchema),
     defaultValues: {
       [RestorePasswordFormFields.resetPasswordToken]: params?.token || '',
       [RestorePasswordFormFields.password]: '',
@@ -59,13 +56,14 @@ const RestorePasswordForm: FC<RestorePasswordFormProps> = ({ onSuccess }) => {
   }, [params, router, t])
 
   // Handlers
-  const onSubmit: SubmitHandler<RestorePasswordFormValues> = (values) => {
+  const onSubmit: SubmitHandler<RestorePasswordValidationSchemaType> = (values) => {
     void dispatch(authStore.resetPasswordAction(values)).then((payload) => {
       if ((payload.payload as BaseResponseWrapper)?.success) {
         onSuccess?.()
       }
     })
   }
+  // FIXME onErrorSubmit
 
   // Renders
   return (

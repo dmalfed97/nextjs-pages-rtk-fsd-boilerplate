@@ -1,1 +1,1 @@
-export { CurrentUserHelper } from './CurrentUserHelper'
+export * from './CurrentUserHelper'

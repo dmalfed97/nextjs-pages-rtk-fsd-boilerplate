@@ -1,1 +1,1 @@
-export { CurrentUserAvatar } from './CurrentUserAvatar'
+export * from './CurrentUserAvatar'

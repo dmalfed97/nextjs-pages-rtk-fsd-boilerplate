@@ -1,8 +1,14 @@
 import { TextField, type TextFieldProps, type TextFieldVariants } from '@mui/material'
-import { useTranslation } from 'next-i18next'
-import React, { type ReactNode } from 'react'
-import type { UseWatchProps, FieldPath, FieldValues, ControllerFieldState } from 'react-hook-form'
+import React, { type ChangeEvent, type ReactNode } from 'react'
+import type {
+  UseWatchProps,
+  FieldPath,
+  FieldValues,
+  ControllerFieldState,
+  ControllerRenderProps,
+} from 'react-hook-form'
 import { Controller } from 'react-hook-form'
+import { useTranslation } from 'next-i18next'
 
 import { useStyles } from './index.styled'
 
@@ -44,43 +50,48 @@ const RHFTextField = function <T extends FieldValues>({
   }
 
   // Renders
-  return (
-    <Controller
-      name={name}
-      render={({ field, fieldState }) => (
-        <TextField
-          className={classes.textField}
-          inputRef={field.ref}
-          variant={variant}
-          {...field}
-          {...rest}
-          error={!!fieldState.error?.message || rest.error}
-          helperText={getHelperText(fieldState)}
-          ref={null}
-          onChange={(e) => {
-            const { onChange } = rest
+  const renderTextField = ({
+    field,
+    fieldState,
+  }: {
+    field: ControllerRenderProps<T, typeof name>
+    fieldState: ControllerFieldState
+  }) => {
+    const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+      const { onChange } = rest
 
-            if (onChange) {
-              onChange(e)
-            } else {
-              if (trimWhiteSpaces) {
-                field.onChange({
-                  ...e,
-                  target: {
-                    ...e.target,
-                    value: e.target.value.trim(),
-                  },
-                })
-              } else {
-                field.onChange(e)
-              }
-            }
-          }}
-        />
-      )}
-      {...hookFormProps}
-    />
-  )
+      if (onChange) {
+        onChange(e)
+      } else {
+        if (trimWhiteSpaces) {
+          field.onChange({
+            ...e,
+            target: {
+              ...e.target,
+              value: e.target.value.trim(),
+            },
+          })
+        } else {
+          field.onChange(e)
+        }
+      }
+    }
+
+    return (
+      <TextField
+        className={classes.textField}
+        inputRef={field.ref}
+        variant={variant}
+        {...field}
+        {...rest}
+        error={!!fieldState.error?.message || rest.error}
+        helperText={getHelperText(fieldState)}
+        onChange={handleInputChange}
+      />
+    )
+  }
+
+  return <Controller name={name} render={renderTextField} {...hookFormProps} />
 }
 
 export { RHFTextField }

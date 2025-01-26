@@ -5,11 +5,9 @@ interface IAuthContext {
   isAuthorized: boolean
 }
 
-const AuthContext = createContext<IAuthContext>({
+export const AuthContext = createContext<IAuthContext>({
   isInitialized: false,
   isAuthorized: false,
 })
-
-export { AuthContext }
 
 export const useAuthContext = (): IAuthContext => useContext(AuthContext)

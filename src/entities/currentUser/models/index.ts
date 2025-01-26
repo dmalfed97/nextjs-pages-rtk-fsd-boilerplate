@@ -1,1 +1,1 @@
-export type { CurrentUserModel } from './CurrentUserModel'
+export * from './CurrentUserModel'

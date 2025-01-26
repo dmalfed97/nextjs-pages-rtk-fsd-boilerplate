@@ -1,1 +1,1 @@
-export { CategoriesSchema } from './CategoriesSchema'
+export * from './CategoriesSchema'

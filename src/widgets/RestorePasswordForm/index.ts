@@ -1,1 +1,1 @@
-export { RestorePasswordForm } from './ui'
+export * from './ui'

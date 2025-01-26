@@ -7,21 +7,16 @@ import React, { useState, type FC, type ChangeEvent } from 'react'
 import { FormProvider, useForm, type SubmitHandler } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
-import {
-  authStore,
-  authSelectors,
-  RegistrationFormFields,
-  type RegistrationFormValues,
-} from '~entities/auth'
+import { authStore, authSelectors, RegistrationFormFields } from '~entities/auth'
 // import { RHFSelectField } from '~shared/ui/RHFSelectField'
-import type { BaseResponseWrapper } from '~shared/api/base'
 // import { Sex } from '~shared/types/sex'
 import useAppDispatch from '~shared/hooks/useAppDispatch'
 import { UploadingStatus } from '~shared/types/loadingStatus'
 import { RHFPasswordField } from '~shared/ui/RHFPasswordField'
 import { RHFTextField } from '~shared/ui/RHFTextField'
+import type { BaseResponseWrapper } from '~shared/api/base'
 
-import { RegistrationValidationSchema } from '../validation'
+import { RegistrationValidationSchema, type RegistrationValidationSchemaType } from '../validation'
 
 interface RegistrationFormProps {
   onSuccess?: () => void
@@ -37,9 +32,8 @@ const RegistrationForm: FC<RegistrationFormProps> = ({ onSuccess }) => {
 
   const [rulesApplied, setRulesApplied] = useState<boolean>(false)
 
-  const formMethods = useForm<RegistrationFormValues>({
-    // @ts-expect-error typical yup error
-    resolver: yupResolver<RegistrationFormValues>(RegistrationValidationSchema),
+  const formMethods = useForm<RegistrationValidationSchemaType>({
+    resolver: yupResolver(RegistrationValidationSchema),
     defaultValues: {
       [RegistrationFormFields.email]: '',
       [RegistrationFormFields.password]: '',
@@ -47,8 +41,6 @@ const RegistrationForm: FC<RegistrationFormProps> = ({ onSuccess }) => {
       // [RegistrationFormFields.firstName]: '',
       // [RegistrationFormFields.lastName]: '',
       // [RegistrationFormFields.sex]: Sex.MALE,
-      // [RegistrationFormFields.dateOfBirth]: null,
-      // [RegistrationFormFields.location]: '',
     },
   })
   const { control, handleSubmit } = formMethods
@@ -58,7 +50,7 @@ const RegistrationForm: FC<RegistrationFormProps> = ({ onSuccess }) => {
     setRulesApplied(e.target.checked)
   }
 
-  const onSubmit: SubmitHandler<RegistrationFormValues> = (values) => {
+  const onSubmit: SubmitHandler<RegistrationValidationSchemaType> = (values) => {
     if (rulesApplied) {
       void dispatch(
         authStore.registerAction({
@@ -67,8 +59,6 @@ const RegistrationForm: FC<RegistrationFormProps> = ({ onSuccess }) => {
           passwordConfirm: values.passwordConfirm.trim(),
           // firstName: values.firstName?.trim() || null,
           // lastName: values.lastName?.trim() || null,
-          // dateOfBirth: values.dateOfBirth,
-          // location: values.location?.trim() || null,
           // sex: values.sex,
         })
       ).then((payload) => {

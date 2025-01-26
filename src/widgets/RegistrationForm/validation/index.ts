@@ -8,16 +8,15 @@ import {
   // lastNameValidation,
   emailValidation,
   passwordValidation,
-  // dateValidation,
 } from '~shared/utils/yupValidations'
 
 export const RegistrationValidationSchema = Yup.object({
-  [RegistrationFormFields.email]: emailValidation,
+  [RegistrationFormFields.email]: emailValidation.required('validation:inputField.required'),
   [RegistrationFormFields.password]: passwordValidation,
   [RegistrationFormFields.passwordConfirm]: passwordValidation.oneOf([Yup.ref('password')]),
   // [RegistrationFormFields.firstName]: firstNameValidation,
   // [RegistrationFormFields.lastName]: lastNameValidation,
-  // [RegistrationFormFields.dateOfBirth]: dateValidation,
-  // [RegistrationFormFields.location]: inputFieldValidation,
   // [RegistrationFormFields.sex]: Yup.mixed<Sex>().oneOf(Object.values(Sex)),
 })
+
+export type RegistrationValidationSchemaType = Yup.InferType<typeof RegistrationValidationSchema>

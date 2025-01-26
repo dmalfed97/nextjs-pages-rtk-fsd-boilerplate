@@ -2,7 +2,13 @@ import type { SelectProps, SelectVariants } from '@mui/material'
 import { FormControl, InputLabel, Select, FormHelperText } from '@mui/material'
 import { useTranslation } from 'next-i18next'
 import React, { type ReactNode } from 'react'
-import type { UseWatchProps, FieldPath, FieldValues, ControllerFieldState } from 'react-hook-form'
+import type {
+  UseWatchProps,
+  FieldPath,
+  FieldValues,
+  ControllerFieldState,
+  ControllerRenderProps,
+} from 'react-hook-form'
 import { Controller } from 'react-hook-form'
 
 import { useStyles } from './index.styled'
@@ -45,38 +51,39 @@ const RHFSelectField = function <T extends FieldValues>({
   }
 
   // Renders
-  return (
-    <Controller
-      name={name}
-      render={({ field, fieldState }) => (
-        <FormControl>
-          {rest.label && <InputLabel id="demo-simple-select-helper-label">{rest.label}</InputLabel>}
+  const renderField = ({
+    field,
+    fieldState,
+  }: {
+    field: ControllerRenderProps<T, typeof name>
+    fieldState: ControllerFieldState
+  }) => (
+    <FormControl>
+      {rest.label && <InputLabel id="demo-simple-select-helper-label">{rest.label}</InputLabel>}
 
-          <Select
-            className={classes.select}
-            inputRef={field.ref}
-            variant={variant}
-            {...field}
-            {...rest}
-            error={!!fieldState.error?.message || rest.error}
-            ref={null}
-            onChange={(e, child) => {
-              const { onChange } = rest
+      <Select
+        className={classes.select}
+        inputRef={field.ref}
+        variant={variant}
+        {...field}
+        {...rest}
+        error={!!fieldState.error?.message || rest.error}
+        onChange={(e, child) => {
+          const { onChange } = rest
 
-              if (onChange) {
-                onChange(e, child)
-              } else {
-                field.onChange(e)
-              }
-            }}
-          />
+          if (onChange) {
+            onChange(e, child)
+          } else {
+            field.onChange(e)
+          }
+        }}
+      />
 
-          <FormHelperText>{getHelperText(fieldState)}</FormHelperText>
-        </FormControl>
-      )}
-      {...hookFormProps}
-    />
+      <FormHelperText>{getHelperText(fieldState)}</FormHelperText>
+    </FormControl>
   )
+
+  return <Controller name={name} render={renderField} {...hookFormProps} />
 }
 
 export { RHFSelectField }

@@ -18,7 +18,7 @@ interface RHFPhoneFieldProps<T extends FieldValues>
 }
 
 // TODO Add validation with google-libphonenumber
-// 1 problem - linking with Yup
+// 1 problem - linking with yup
 // 2 problem - 500kb
 const RHFPhoneField = function <T extends FieldValues>({
   name,
@@ -34,6 +34,10 @@ const RHFPhoneField = function <T extends FieldValues>({
   })
 
   // Renders
+  const renderValue = (value: ParsedCountry) => (
+    <FlagImage iso2={value.iso2} style={{ display: 'flex' }} />
+  )
+
   return (
     <Controller
       name={name}
@@ -95,9 +99,7 @@ const RHFPhoneField = function <T extends FieldValues>({
                   onChange={(e) => {
                     setCountry(e.target.value as ParsedCountry['iso2'])
                   }}
-                  renderValue={(value) => (
-                    <FlagImage iso2={value.iso2} style={{ display: 'flex' }} />
-                  )}
+                  renderValue={renderValue}
                 >
                   {defaultCountries.map((c) => {
                     const country = parseCountry(c)

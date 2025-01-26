@@ -6,19 +6,17 @@ import React, { type FC, type MouseEvent } from 'react'
 import { FormProvider, useForm, type SubmitHandler } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
-import {
-  RestorePasswordRequestFormFields,
-  authStore,
-  authSelectors,
-  type RestorePasswordRequestFormValues,
-} from '~entities/auth'
+import { RestorePasswordRequestFormFields, authStore, authSelectors } from '~entities/auth'
 import { currentUserSelectors } from '~entities/currentUser'
 import type { BaseResponseWrapper } from '~shared/api/base'
 import useAppDispatch from '~shared/hooks/useAppDispatch'
 import { UploadingStatus } from '~shared/types/loadingStatus'
 import { RHFTextField } from '~shared/ui/RHFTextField'
 
-import { RestorePasswordRequestValidationSchema } from '../validation'
+import {
+  RestorePasswordRequestValidationSchema,
+  type RestorePasswordRequestValidationSchemaType,
+} from '../validation'
 
 interface RestoreAccessModalStepProps {
   handleCloseModal: (e?: MouseEvent) => void
@@ -31,9 +29,8 @@ const RestoreAccessModalStep: FC<RestoreAccessModalStepProps> = ({ handleCloseMo
   const uploadingStatus = authSelectors.useUploadingStatus()
   const currentUser = currentUserSelectors.useCurrentUser()
 
-  const formMethods = useForm<RestorePasswordRequestFormValues>({
-    // @ts-expect-error typical yup error
-    resolver: yupResolver<RestorePasswordRequestFormValues>(RestorePasswordRequestValidationSchema),
+  const formMethods = useForm<RestorePasswordRequestValidationSchemaType>({
+    resolver: yupResolver(RestorePasswordRequestValidationSchema),
     defaultValues: {
       [RestorePasswordRequestFormFields.email]: currentUser?.email || '',
     },
@@ -45,7 +42,7 @@ const RestoreAccessModalStep: FC<RestoreAccessModalStepProps> = ({ handleCloseMo
     toast.error(t('errors.generic'))
   }
 
-  const onSubmit: SubmitHandler<RestorePasswordRequestFormValues> = (values) => {
+  const onSubmit: SubmitHandler<RestorePasswordRequestValidationSchemaType> = (values) => {
     void dispatch(authStore.sendResetPasswordEmailAction(values)).then((payload) => {
       if ((payload.payload as BaseResponseWrapper)?.success) {
         handleCloseModal()

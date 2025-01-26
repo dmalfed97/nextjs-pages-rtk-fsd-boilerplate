@@ -1,1 +1,1 @@
-export { LanguageDropdownSelector } from './LanguageDropdownSelector'
+export * from './LanguageDropdownSelector'

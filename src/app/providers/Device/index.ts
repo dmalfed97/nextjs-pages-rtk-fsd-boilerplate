@@ -1,2 +1,2 @@
-export { DeviceContext, useIsMobile } from './DeviceContext'
-export { DeviceProvider } from './DeviceProvider'
+export * from './DeviceContext'
+export * from './DeviceProvider'
