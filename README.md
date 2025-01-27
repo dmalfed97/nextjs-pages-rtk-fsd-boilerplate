@@ -1,2 +1,7 @@
 # nextjs-pages-rtk-fsd-boilerplate
-FSD template for NextJS pages router application based on RTK state management
+## WIP
+
+#### TODO
+- improve validation schemas i18n support
+- set up PWA support
+- README
