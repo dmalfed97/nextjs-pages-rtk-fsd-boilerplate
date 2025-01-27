@@ -1,10 +1,10 @@
-import type { /* GetServerSideProps, */ GetServerSidePropsResult } from 'next'
+import type { GetServerSideProps, GetServerSidePropsResult } from 'next'
 import type { SSRConfig } from 'next-i18next'
 import React, { type FC } from 'react'
-// import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 // import { storeWrapper } from '~app/providers/StoreProvider/store'
-// import { appConfig } from '~app/config'
+import { appConfig } from '~app/config'
 // import { CategoriesSchema, categoriesApi, categoriesStore, type CategoryModel } from '~entities/categories'
 // import { ListLoadingStatus } from '~shared/types/loadingStatus'
 // import { HttpApi } from '~shared/api/base'
@@ -43,7 +43,14 @@ import React, { type FC } from 'react'
 //       },
 //     }
 //   })
-//
+
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale || appConfig.defaultLanguage)),
+    },
+  }
+}
 
 const MainPage: FC<GetServerSidePropsResult<SSRConfig>> = () => {
   // Renders

@@ -169,7 +169,7 @@ export const theme = createTheme({
           letterSpacing: 0.15,
           [theme.breakpoints.up('sm')]: {
             fontSize: 15,
-            lineHeight: '22.5px',
+            lineHeight: '23px',
           },
         }),
         body1: ({ theme }) => ({
@@ -179,7 +179,7 @@ export const theme = createTheme({
           letterSpacing: 0.15,
           [theme.breakpoints.up('sm')]: {
             fontSize: 15,
-            lineHeight: '22.5px',
+            lineHeight: '23px',
             fontWeight: 300,
           },
         }),
