@@ -1,0 +1,24 @@
+{
+  "block": {
+    "description": {
+      "message": "Fill in the profile description, so other users could see it",
+      "title": "Description"
+    }
+  },
+  "modal": {
+    "changePassword": {
+      "title": "Change password"
+    },
+    "cropPhoto": {
+      "title": "Crop photo"
+    },
+    "passwordReset": {
+      "message": "Your recovery link will be sent to the email address below",
+      "title": "Reset password"
+    },
+    "selectPhoto": {
+      "text": "Upload photo in .jpeg or .png",
+      "title": "Select photo"
+    }
+  }
+}

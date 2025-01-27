@@ -1,0 +1,75 @@
+{
+  "button": {
+    "aboutMe": "About me",
+    "backToHomePage": "Back to home page",
+    "browsePhoto": "Browse photo",
+    "cancel": "Cancel",
+    "changeImage": "Change image",
+    "changePassword": "Change password",
+    "createAccount": "Create account",
+    "createNewAccount": "Create new account",
+    "emailAndPassword": "Email and password",
+    "iForgotPassword": "I forgot password",
+    "logIn": "Log in",
+    "logMeIn": "Log me in",
+    "logOut": "Log out",
+    "myAccount": "My account",
+    "reset": "Reset",
+    "save": "Save",
+    "sendRecoveryLink": "Send recovery link",
+    "signIn": "Sign in",
+    "yes": "Yes"
+  },
+  "codeInput": {
+    "incorrectCode": "Incorrect code"
+  },
+  "errors": {
+    "api": {
+      "429": "429, Too many requests",
+      "503": "503, Server is temporary unavailable",
+      "serverUnavailable": "Server is temporary unavailable"
+    },
+    "fieldError": "Field value contains error",
+    "fileUploadingError": "An error occurred while uploading the file",
+    "generic": "Something wrong happened",
+    "invalidTimeInterval": "Invalid time interval"
+  },
+  "input": {
+    "confirmPassword": {
+      "label": "Confirm password"
+    },
+    "currentPassword": {
+      "label": "Current password"
+    },
+    "email": {
+      "label": "Email"
+    },
+    "login": {
+      "label": "Login"
+    },
+    "newPassword": {
+      "label": "New password"
+    },
+    "password": {
+      "description": {
+        "oneDigit": "Password should include at least one digit (0-9).",
+        "oneUppercaseLetter": "Password must contain at least one uppercase letter (A-Z).",
+        "passwordMinLength": "The password length should be at least 8 characters."
+      },
+      "label": "Password"
+    }
+  },
+  "links": {
+    "privacyPolicy": "https://google.com",
+    "termsOfService": "https://google.com",
+    "userAgreement": "https://google.com"
+  },
+  "timeMeasurement": {
+    "hour_few": "{{count}} hours",
+    "hour_many": "{{count}} hours",
+    "hour_one": "{{count}} hour",
+    "minute_few": "{{count}} minutes",
+    "minute_many": "{{count}} minutes",
+    "minute_one": "{{count}} minute"
+  }
+}

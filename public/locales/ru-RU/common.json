@@ -1,0 +1,75 @@
+{
+  "button": {
+    "aboutMe": "Обо мне",
+    "backToHomePage": "Вернуться на главную",
+    "browsePhoto": "Выбрать фото",
+    "cancel": "Отменить",
+    "changeImage": "Сменить изображение",
+    "changePassword": "Сменить пароль",
+    "createAccount": "Создать аккаунт",
+    "createNewAccount": "Создать новый аккаунт",
+    "emailAndPassword": "Email и пароль",
+    "iForgotPassword": "Я забыл пароль",
+    "logIn": "Войти",
+    "logMeIn": "Войти",
+    "logOut": "Выйти",
+    "myAccount": "Мой профиль",
+    "reset": "Сбросить",
+    "save": "Сохранить",
+    "sendRecoveryLink": "Отправить ссылку восстановления",
+    "signIn": "Войти",
+    "yes": "Да"
+  },
+  "codeInput": {
+    "incorrectCode": "Неверный код"
+  },
+  "errors": {
+    "api": {
+      "429": "429, Слишком много запросов, попробуйте позже",
+      "503": "503, Сервер временно недоступен",
+      "serverUnavailable": "Сервер временно недоступен"
+    },
+    "fieldError": "Значение в поле содержит ошибку",
+    "fileUploadingError": "При загрузке файла произошла ошибка",
+    "generic": "Что-то пошло не так",
+    "invalidTimeInterval": "Некорректный временной интервал"
+  },
+  "input": {
+    "confirmPassword": {
+      "label": "Подтвердите пароль"
+    },
+    "currentPassword": {
+      "label": "Текущий пароль"
+    },
+    "email": {
+      "label": "Email"
+    },
+    "login": {
+      "label": "Логин"
+    },
+    "newPassword": {
+      "label": "Новый пароль"
+    },
+    "password": {
+      "description": {
+        "oneDigit": "Пароль должен включать хотя бы одну цифру (0-9).",
+        "oneUppercaseLetter": "Пароль должен содержать хотя бы одну заглавную букву (A-Z).",
+        "passwordMinLength": "Длина пароля должна быть не менее 8 символов."
+      },
+      "label": "Пароль"
+    }
+  },
+  "links": {
+    "privacyPolicy": "https://google.ru",
+    "termsOfService": "https://google.ru",
+    "userAgreement": "https://google.ru"
+  },
+  "timeMeasurement": {
+    "hour_few": "{{count}} часа",
+    "hour_many": "{{count}} часов",
+    "hour_one": "{{count}} час",
+    "minute_few": "{{count}} минуты",
+    "minute_many": "{{count}} минут",
+    "minute_one": "{{count}} минута"
+  }
+}

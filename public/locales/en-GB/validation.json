@@ -1,0 +1,26 @@
+{
+  "email": {
+    "incorrectFormat": "Invalid Email format"
+  },
+  "firstName": {
+    "min": "Name must contain at least 2 characters"
+  },
+  "inputField": {
+    "required": "Field is required"
+  },
+  "lastName": {
+    "min": "Lastname must contain at least 2 characters"
+  },
+  "login": {
+    "invalidSymbols": "Login contains invalid characters",
+    "min": "Login must contain at least 2 symbols"
+  },
+  "password": {
+    "cyrillic": "Password must not contain cyrillic characters",
+    "min": "Password must contain at least 8 characters",
+    "spaces": "Password must not contain spaces"
+  },
+  "textField": {
+    "max": "Message length must not exceed {{max}} characters"
+  }
+}

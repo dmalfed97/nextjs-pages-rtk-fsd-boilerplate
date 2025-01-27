@@ -1,0 +1,4 @@
+export enum UpdateCurrentUserAvatarSteps {
+  SELECT_NEW_AVATAR_STEP = 'SELECT_NEW_AVATAR_STEP',
+  CROP_AVATAR_STEP = 'CROP_AVATAR_STEP',
+}
